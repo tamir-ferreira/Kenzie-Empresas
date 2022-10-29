@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&family=Roboto:wght@700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-white);
+}
+
+:root {
+  --color-brand: #4200FF;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-alert: #CE4646;
+  --color-success: #4BA036;
+  
+  --size-title-1: 32px;
+  --size-title-2: 24px;
+
+  --size-text-1: 20px;
+  --size-text-2: 16px;
+  --size-text-3: 14px;
+  --size-text-4: 12px;
+
+  --weight-1: 700;
+  --weight-2: 400;
+  
+  --radius-1: 15px;
+  --radius-2: 255px;
+}
+
+/* body {
+  align-items: center;
+  height: 100vh;
+  background-color: var(--color-grey-4);
+}
+
+ul {
+  list-style: none;
+}
+
+.title-1 {
+  font-size: var(--size-title-1);
+  font-weight: var(--weight-1);
+}
+
+.title-2 {
+  font-size: var(--size-title-2);
+  font-weight: var(--weight-0);
+}
+
+.text-1 {
+  font-size: var(--size-text-1);
+  font-weight: var(--weight-3);
+}
+
+.text-2 {
+  font-size: var(--size-text-1);
+  font-weight: var(--weight-2);
+}
+
+.text-3 {
+  font-size: var(--size-text-2);
+  font-weight: var(--weight-2);
+}
+
+.text-4 {
+  font-size: var(--size-text-3);
+  font-weight: var(--weight-2);
+}
+
+.text-5 {
+  font-size: var(--size-text-3);
+  font-weight: var(--weight-3);
+  line-height: 150%;
+}
+
+.container-1 {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.container-2 {
+  width: 784px;
+  margin: 0 auto;
+} */
