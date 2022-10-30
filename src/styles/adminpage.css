@@ -1,0 +1,87 @@
+h2 {
+    font-size: var(--size-title-4);
+}
+
+h4{
+    font-size: var(--size-text-2);
+}
+
+span{
+    font-size: var(--size-text-3);
+}
+
+.departments>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 93px 0 20px 0;
+}
+
+.departments>div>div {
+    width: 282px;
+    height: 32px;
+    border: 1px solid var(--color-black);
+    border-radius: var(--radius-1);
+    padding: 0 18px 0 18px;
+    /* margin-left: 50px; */
+}
+
+.departments>div>div>select {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid gray; */
+    border: none;
+    font-size: var(--size-text-2);
+    /* border-radius: var(--radius-1); */
+}
+
+.departments>div>button {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding-left: 16px;
+    gap: 16px;
+}
+
+.list-departments,
+.list-employees {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: var(--color-grey-1);
+    height: 385px;
+    padding: 34px 56px;
+    gap: 28px;
+    margin-bottom: 70px;
+    overflow-y: scroll;
+}
+
+.list-departments > li,
+.list-employees > li{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    width: 489px;
+    padding: 20px 29px;
+    gap: 10px;
+    border-bottom: 1px solid var(--color-brand);
+}
+
+.list-departments > li > div,
+.list-employees > li > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+section:last-child > h2{
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+
+/* .list-employees::-webkit-scrollbar-track { background-color: #f0f0f0 }
+.list-employees::-webkit-scrollbar { width: 9px}
+.list-employees::-webkit-scrollbar-thumb { background: var(--color-brand) } */
