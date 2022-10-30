@@ -9,7 +9,7 @@ button{
 .btn-brand{
     background: var(--color-brand);
     color: var(--color-white);
-    border: 1px solid var(--color-black);
+    border: 1px solid var(--color-brand);
 }
 
 .btn-outline{

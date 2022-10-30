@@ -15,7 +15,11 @@
   --color-alert: #CE4646;
   --color-success: #4BA036;
   --color-grey-1: #F8F8F8;
+  --color-grey-2: rgba(255, 255, 255, 0.95);
   --border-1: rgba(0, 0, 0, 0.12);
+  --border-2: rgba(0, 0, 0, 0.3);
+  --opacity-1: rgba(0, 0, 0, 0.7);
+
 
   --size-title-1: 40px;
   --size-title-2: 36px;
@@ -39,8 +43,46 @@
   --family-3: 'Roboto', sans-serif;
 }
 
+header {
+  height: 80px;
+  display: flex;
+  border-bottom: 1px solid var(--border-1);
+}
+
+header>div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  gap: 11px;
+}
+
 ul {
   list-style: none;
+}
+
+input, select{
+  height: 52px;
+  padding-left: 17px ;
+  font-size: var(--size-text-3);
+  border: 1px solid var(--border-2);
+  outline: none;
+  /* background-color: red; */
+}
+
+select {
+  color: var(--opacity-1);
+  line-height: 30px;
+  cursor: pointer;
+}
+
+input:focus,
+select:focus{
+  border: 1px solid var(--color-brand);
 }
 
 /* body {
