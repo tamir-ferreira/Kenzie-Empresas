@@ -31,7 +31,7 @@
     flex-direction: column;
     /* gap: 58px; */
     background-color: var(--color-grey-1);
-    /* display: none; */
+    display: none;
 }
 
 .empty{
@@ -41,7 +41,7 @@
     height: 467px;
     background-color: var(--color-grey-1);
     border: 1px solid var(--border-2);
-    display: none;
+    /* display: none; */
 }
 
 .empty>h2{

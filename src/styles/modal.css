@@ -1,0 +1,129 @@
+.modal-container{
+    display: none;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-modal);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    /* left: 0; */
+    top: 0;
+}
+
+.show-modal{
+    display: flex;
+}
+
+.modal-container > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 14px;
+    width: 506px;
+    /* margin: 0 auto; */
+    padding: 40px 40px 57px 40px;
+    /* border: 1px solid green; */
+    background-color: var(--color-white);
+    position: relative;
+}
+
+.modal-container > div > img{
+    display: flex;
+    position: absolute;
+    top: 22px;
+    right: 24px;
+}
+
+.modal-container > div > h2{
+    font-size: var(--size-title-2);
+    font-family: var(--family-2);
+}
+
+.modal-container > div > form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    /* border: 1px solid green; */
+}
+
+.modal-container button{
+    width: 100%;
+    margin-top: 8px;
+    /* font-size: 18px; */
+}
+
+div.modal-departments{
+    display: flex;
+    flex-direction: column;
+    width: 857px;
+}
+
+div.modal-departments >div{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    /* background-color: red; */
+    margin-bottom: 37px;
+    /* overflow: scroll; */
+    
+}
+
+div.modal-departments >div>div:first-child{
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    margin-top: 15px;
+    gap: 11px;
+
+}
+div.modal-departments >div>div:last-child{
+    display: flex;
+    flex-direction: column;
+    width: 422px;
+    /* background-color: blue; */
+}
+
+div.modal-departments >div>div:last-child button{
+    /* background-color: blue; */
+    align-self: flex-end;
+    width:fit-content;
+    /* padding: 0 26px; */
+    width: 157px;
+}
+
+div.modal-departments > ul{
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid red; */
+    width: 100%;
+    background-color: var(--color-grey-1);
+    padding: 43px 33px;
+    gap: 31px;
+    overflow-x: scroll;
+}
+
+div.modal-departments > ul > li{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 18px 29px;
+    gap: 22px;
+    border-bottom: 1px solid var(--color-brand);
+    /* border: 1px solid blue */
+}
+
+div.modal-departments > ul > li > div{
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 306px;
+}
+
+div.modal-departments > ul > li > button{
+    align-self: center;
+    width: 157px;
+}
