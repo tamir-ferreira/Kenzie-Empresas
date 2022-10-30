@@ -18,13 +18,15 @@
   --color-grey-2: rgba(255, 255, 255, 0.95);
   --border-1: rgba(0, 0, 0, 0.12);
   --border-2: rgba(0, 0, 0, 0.3);
+  --border-3: rgba(0, 0, 0, 0.2);
   --opacity-1: rgba(0, 0, 0, 0.7);
 
 
   --size-title-1: 40px;
   --size-title-2: 36px;
-  --size-title-3: 30px;
-  --size-title-4: 28px;
+  --size-title-3: 32px;
+  --size-title-4: 30px;
+  --size-title-5: 28px;
 
   --size-text-1: 22px;
   --size-text-2: 20px;
@@ -85,6 +87,12 @@ select:focus{
   border: 1px solid var(--color-brand);
 }
 
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+
 /* body {
   align-items: center;
   height: 100vh;
@@ -130,8 +138,3 @@ select:focus{
 }
 
 } */
-
-.container {
-  max-width: 1160px;
-  margin: 0 auto;
-}
