@@ -1,27 +1,8 @@
-header {
-    height: 80px;
-    display: flex;
-    border-bottom: 1px solid var(--border-1);
-    margin-bottom: 43px;
-}
-
-header>div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-nav{
-    display: flex;
-    gap: 11px;
-}
-
 main{
     display: flex;
     justify-content: space-between;
+   padding-top: 43px;
 }
-
 
 section{
     width: 550px;
