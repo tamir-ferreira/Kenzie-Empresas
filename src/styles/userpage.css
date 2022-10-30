@@ -1,0 +1,77 @@
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--border-3);
+    margin: 24px 0 53px 0;
+    padding: 20px 31px;
+}
+
+.user-info>div {
+    display: flex;
+    align-items: flex-end;
+    gap: 150px;
+}
+
+.user-info>div>div {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.user-info>div>div>h1 {
+    font-size: var(--size-title-4);
+}
+
+.user-info>div span {
+    font-size: var(--size-text-1);
+}
+
+.list-users {
+    display: flex;
+    flex-direction: column;
+    /* gap: 58px; */
+    background-color: var(--color-grey-1);
+    /* display: none; */
+}
+
+.empty{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 467px;
+    background-color: var(--color-grey-1);
+    border: 1px solid var(--border-2);
+    display: none;
+}
+
+.empty>h2{
+    font-size: var(--size-title-1);
+}
+
+.list-users>h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-brand);
+    color: var(--color-white);
+    height: 78px;
+    font-size: var(--size-title-3);
+}
+
+.list-users>ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    padding: 58px;
+    justify-content: space-between;
+}
+
+.list-users>ul>li{
+    display: flex;
+    flex-direction: column;
+    width: 318px;
+    padding: 13px 23px;
+    gap: 14px;
+    border: 1px solid var(--color-brand);
+    background-color: var(--color-white);
+}
