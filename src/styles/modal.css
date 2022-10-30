@@ -127,3 +127,16 @@ div.modal-departments > ul > li > button{
     align-self: center;
     width: 157px;
 }
+
+
+div.modal-confirmation{
+    display: flex;
+    flex-direction: column;
+    width: 733px;
+    padding: 70px 157px 56px 157px;
+}
+
+div.modal-confirmation h3{
+    font-size: var(--size-title-5);
+    text-align: center;
+}
