@@ -1,3 +1,11 @@
+button{
+    cursor: pointer;
+    /* padding: 11px 37px; */
+    width: 142px;
+    height: 48px;
+    font-size: var(--font-text-3);
+    font-weight: var(--weight-1);
+}
 .btn-brand{
     background: var(--color-brand);
     color: var(--color-white);
@@ -7,6 +15,8 @@
 .btn-outline{
     color: var(--color-brand);
     border: 1px solid var(--color-brand);
+    background: none;
+    font-family: var(--family-3);
 }
 
 .btn-success{

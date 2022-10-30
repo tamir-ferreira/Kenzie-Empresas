@@ -4,8 +4,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-  color: var(--color-white);
+  font-family: var(--family-1);
+  color: var(--color-black);
 }
 
 :root {
@@ -14,20 +14,33 @@
   --color-black: #000000;
   --color-alert: #CE4646;
   --color-success: #4BA036;
-  
-  --size-title-1: 32px;
-  --size-title-2: 24px;
+  --color-grey-1: #F8F8F8;
+  --border-1: rgba(0, 0, 0, 0.12);
 
-  --size-text-1: 20px;
-  --size-text-2: 16px;
-  --size-text-3: 14px;
-  --size-text-4: 12px;
+  --size-title-1: 40px;
+  --size-title-2: 36px;
+  --size-title-3: 30px;
+  --size-title-4: 28px;
+
+  --size-text-1: 22px;
+  --size-text-2: 20px;
+  --size-text-3: 18px;
+  --size-text-4: 16px;
+  --size-text-5: 14px;
 
   --weight-1: 700;
   --weight-2: 400;
-  
+
   --radius-1: 15px;
-  --radius-2: 255px;
+  --radius-2: 25px;
+
+  --family-1: 'Inter', sans-serif;
+  --family-2: 'Poppins', sans-serif;
+  --family-3: 'Roboto', sans-serif;
+}
+
+ul {
+  list-style: none;
 }
 
 /* body {
@@ -36,9 +49,7 @@
   background-color: var(--color-grey-4);
 }
 
-ul {
-  list-style: none;
-}
+
 
 .title-1 {
   font-size: var(--size-title-1);
@@ -76,12 +87,9 @@ ul {
   line-height: 150%;
 }
 
-.container-1 {
-  max-width: 1440px;
+} */
+
+.container {
+  max-width: 1160px;
   margin: 0 auto;
 }
-
-.container-2 {
-  width: 784px;
-  margin: 0 auto;
-} */
