@@ -1,7 +1,32 @@
-import { getAllCompanys } from "./tokenlessRequests.js"
+import { getAllCompanys, getAllSectors, getCompanysBySector } from "./tokenlessRequests.js"
 
 
-const renderAllCompanys = async (companies) => {
+const renderSelect = async () => {
+    const select = document.querySelector('#sectors')
+    const sectors = await getAllSectors()
+    let option = document.createElement('option')
+    
+    select.innerHTML = ''
+    select.appendChild(option)
+    option.innerText = 'Selecionar Setor'
+    option.value = ''
+
+    sectors.forEach(sector => {
+        select.append(option)
+        option = document.createElement('option')
+        option.innerText = sector.description
+        option.value = sector.description
+    })
+
+    select.onchange = async () => {
+        const filteredCompanys = await getCompanysBySector(select.value)
+        await renderCompanys(filteredCompanys)
+    }
+}
+renderSelect()
+
+
+const renderCompanys = async (companies) => {
     const list = document.querySelector('section > ul')
     // const companies = await getAllCompanys()
     list.innerHTML = ''
@@ -9,7 +34,7 @@ const renderAllCompanys = async (companies) => {
     companies.forEach(company => {
         const { name, opening_hours } = company
         const { description } = company.sectors
-        console.log(company)
+        // console.log(company)
         list.insertAdjacentHTML('beforeend',
             `<li>
                 <h4>${name}</h4>
@@ -19,5 +44,6 @@ const renderAllCompanys = async (companies) => {
             `
         )
     });
+    // renderSelect()
 }
-renderAllCompanys(await getAllCompanys())
+renderCompanys(await getAllCompanys())
