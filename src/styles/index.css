@@ -24,9 +24,11 @@ section {
 } */
 section>div {
     height: 52px;
+    /* width: 100.3%; */
     overflow: hidden;
-    background: url('../images/arrowBottom.svg') no-repeat right var(--color-brand);
-    border: 1px solid #ccc;
+    background: url('../images/arrowBottom.svg') no-repeat center var(--color-brand);
+    background-position-x: 505px;
+    /* border: 1px solid #ccc; */
 }
 
 section>div>select {
@@ -47,14 +49,15 @@ section>div>select {
 
 
 
-section>div>img {
+/* section>div>img {
     position: absolute;
     right: 14px;
-}
+} */
 
 section>ul {
     display: flex;
     flex-direction: column;
+    /* width: 549px; */
     gap: 22px;
     padding: 25px 30px;
     height:691px;
