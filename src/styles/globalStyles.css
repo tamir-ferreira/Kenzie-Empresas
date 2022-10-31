@@ -102,7 +102,7 @@ select:focus {
   padding: 0 20px;
   justify-content: center;
   align-items: center;
-  min-width: 207px;
+  /* min-width: 207px; */
   height: 68px;
   border-radius: var(--radius-3);
   position: fixed;
@@ -112,7 +112,11 @@ select:focus {
   animation: 1s toast ease-in-out;
 }
 
-.toast>h4 {
+.toast>h4,
+.toast>h4>a {
+  line-height: 150%;
+  text-align: center;
+  width: 200px;
   color: var(--color-white);
   font-size: var(--size-text-5);
 }
