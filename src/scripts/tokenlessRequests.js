@@ -99,28 +99,42 @@ export const getAllCompanys = async() => {
 
 
 /* ----------------- LISTAR EMPRESAS POR SETOR ---------------- */
-export const getCompanysBySector = () => {
+export const getCompanysBySector = async(sector) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/companies/Alimenticio',
-        headers: { Authorization: 'Bearer ' }
+        url: `http://localhost:6278/companies/${sector} `
     };
 
-    axios.request(options).then(function (response) {
+    try {
+        const request = await axios.request(options)
+        // console.log(request)
+        return request.data
+    } catch (error) {
+        console.error(error)
+    }
+   /*  axios.request(options).then(function (response) {
         console.log(response.data);
     }).catch(function (error) {
         console.error(error);
-    });
+    }); */
 }
 
 
 /* ----------------- LISTAR TODOS OS SETORES ---------------- */
-const listAllSectors = () => {
+export const getAllSectors = async() => {
     const options = { method: 'GET', url: 'http://localhost:6278/sectors' };
 
-    axios.request(options).then(function (response) {
+    try {
+        const request = await axios.request(options)
+        return request.data
+        
+    } catch (error) {
+        console.error(error)
+    }
+    /* axios.request(options).then(function (response) {
         console.log(response.data);
+        return response.data
     }).catch(function (error) {
         console.error(error);
-    });
+    }); */
 }
