@@ -1,5 +1,4 @@
 /* ================= FUNCIONÁRIOS (USERS) ================== */
-import axios from "axios";
 
 
 /* ----------------- BUSCAR INFORMAÇÕES DO FUNCIONÁRIO LOGADO ---------------- */
@@ -77,18 +76,25 @@ const updateUserInfo = () => {
 
 
 /* ----------------- VERIFICAR O TIPO DE USUÁRIO (ADMIN/USER) ---------------- */
-const checkUserType = () => {
+export const checkUserType = async(token) => {
     const options = {
         method: 'GET',
         url: 'http://localhost:6278/auth/validate_user',
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMzg2NTk2M2MtMzZkNS00YmViLWJlMmYtNDI2ODNiZTJlYTQ0IiwiaXNfYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjY5MTc5MzIsImV4cCI6MTY2Nzc4MTkzMiwic3ViIjoiW29iamVjdCBVbmRlZmluZWRdIn0.zS0QPz6SBanZN6pCVDL028SphZIwy9osySmBumUsegA'
+            Authorization: `Bearer ${token}` 
         }
     };
-
-    axios.request(options).then(function (response) {
-        console.log(response.data);
+    try {
+        const request = await axios.request(options)
+        console.log(request.data.is_admin)
+        return request.data.is_admin
+    } catch (error) {
+        
+    }
+    /* axios.request(options).then(function (response) {
+        console.log(response.data.is_admin);
+        return response.data
     }).catch(function (error) {
         console.error(error);
-    });
+    }); */
 }

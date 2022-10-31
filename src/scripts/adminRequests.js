@@ -122,6 +122,8 @@ const listAllDepartments = () => {
 
 
 /* ----------------- LISTAR TODOS OS DEPARTAMENTOS DE UM EMPRESA  ESPECÍFICA -------------------*/
+
+/* VERIFICAR SE PRECISA OU NÃO USAR */
 const listAllDepartmentsByCompany = () => {
     const options = {
         method: 'GET',
