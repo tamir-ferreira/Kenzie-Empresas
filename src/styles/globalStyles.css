@@ -97,13 +97,13 @@ select:focus {
   margin: 0 auto;
 }
 
-.toast-error {
+.toast{
   display: flex;
+  padding: 0 20px;
   justify-content: center;
   align-items: center;
-  width: 207px;
+  min-width: 207px;
   height: 68px;
-  background-color: var(--color-alert);
   border-radius: var(--radius-3);
   position: fixed;
   right: 10px;
@@ -112,9 +112,17 @@ select:focus {
   animation: 1s toast ease-in-out;
 }
 
-.toast-error>h4 {
+.toast>h4 {
   color: var(--color-white);
   font-size: var(--size-text-5);
+}
+
+.toast-error{
+  background-color: var(--color-alert);
+}
+
+.toast-ok{
+  background-color: var(--color-success);
 }
 
 /* .show-toast{
