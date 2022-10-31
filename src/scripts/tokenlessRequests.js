@@ -1,26 +1,24 @@
 /* ================= ROTAS QUE NÃO UTILIZAM TOKEN ================== */
-import axios from "axios";
 
 
 /* ----------------- CRIAR USUÁRIO ---------------- */
-const createUser = () => {
+export const createUser = async (body) => {
     const options = {
         method: 'POST',
         url: 'http://localhost:6278/auth/register',
         headers: { 'Content-Type': 'application/json' },
-        data: {
-            username: 'kezinho',
-            password: '1234',
-            email: 'kenzinho@mail.com',
-            professional_level: 'sênior'
-        }
+        data: body
     };
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    });
+    try {
+        const request = await axios.request(options)
+        console.log(request);
+
+        return request
+
+    } catch (error) {
+        return error
+    }
 }
 
 

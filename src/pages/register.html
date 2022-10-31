@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="../../src/styles/globalStyles.css">
     <link rel="stylesheet" href="../../src/styles/buttons.css">
     <link rel="stylesheet" href="../../src/styles/login-register.css">
-    <script defer src='../../src/scripts/index.js'></script>
+    <script defer type="module" src='../../src/scripts/register.js'></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Kenzie Empresas - Cadastro</title>
 </head>
 
@@ -32,14 +33,15 @@
         <section>
             <form>
                 <h3>Cadastre-se</h3>
-                <input type="text" placeholder="Seu nome" required>
-                <input type="email" placeholder="Seu e-mail" required>
-                <input type="password" placeholder="Sua senha" required>
-                <select placeholder="Nível" name="level" required>
-                    <option value="volvo">Nível Profissional</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                <input name="username" type="text" placeholder="Seu nome" required>
+                <input name="email" type="email" placeholder="Seu e-mail" required>
+                <input name="password" type="password" placeholder="Sua senha" required>
+                <select name="professional_level">
+                    <option value="">Nível Profissional</option>
+                    <option value="estágio">Estágio</option>
+                    <option value="júnior">Júnior</option>
+                    <option value="pleno">Pleno</option>
+                    <option value="sênior">Senior</option>
                 </select>
                 <button class="btn-brand">Cadastre-se</button>
             </form>
