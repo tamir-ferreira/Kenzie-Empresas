@@ -42,6 +42,7 @@
 
   --radius-1: 15px;
   --radius-2: 25px;
+  --radius-3: 10px;
 
   --family-1: 'Inter', sans-serif;
   --family-2: 'Poppins', sans-serif;
@@ -70,9 +71,10 @@ ul {
   list-style: none;
 }
 
-input, select{
+input,
+select {
   height: 52px;
-  padding-left: 17px ;
+  padding-left: 17px;
   font-size: var(--size-text-3);
   border: 1px solid var(--border-2);
   outline: none;
@@ -86,7 +88,7 @@ select {
 }
 
 input:focus,
-select:focus{
+select:focus {
   border: 1px solid var(--color-brand);
 }
 
@@ -95,11 +97,55 @@ select:focus{
   margin: 0 auto;
 }
 
+.toast-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 207px;
+  height: 68px;
+  background-color: var(--color-alert);
+  border-radius: var(--radius-3);
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  /* transform: translateY(80px); */
+  animation: 1s toast ease-in-out;
+}
 
-::-webkit-scrollbar-track { background-color: var(--color-grey-3)}
-::-webkit-scrollbar { width: 9px; height: 9px;}
-::-webkit-scrollbar-thumb { background: var(--color-brand) }
+.toast-error>h4 {
+  color: var(--color-white);
+  font-size: var(--size-text-5);
+}
 
+/* .show-toast{
+  transition: 1s ease;
+  transform: translateY(0px);
+} */
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-grey-3)
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand)
+}
+
+@keyframes toast {
+  0%{
+    transform: translateY(80px)
+  }
+  50%{
+    transform: translateY(-20px)
+  }
+  100%{
+    transform: translateY(0px)
+  }
+}
 /* body {
   align-items: center;
   height: 100vh;
