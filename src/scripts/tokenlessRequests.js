@@ -27,12 +27,13 @@ export const createUser = async (body) => {
                 message = 'Email inválido. Verifique e tente novamente!'
             }
             if (error == 'email alread exists!') {
-                message = 'Email já cadastrado. Tente novamente!'
+                message = `Email já cadastrado.
+                 Tente novamente ou <a href='./login.html'>faça Login</a>`
                 console.log('erro email duplicado')
             }
             createToast(message, false)
         });
-
+        
         return false
     }
 }
