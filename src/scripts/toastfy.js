@@ -9,7 +9,7 @@ export const createToast = (content, isOk) => {
     } else {
         div.classList.add('toast-error')
     }
-    h4.innerText = content
+    h4.innerHTML = content
     body.appendChild(div)
     div.appendChild(h4)
 
