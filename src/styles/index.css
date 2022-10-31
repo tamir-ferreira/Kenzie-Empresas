@@ -1,10 +1,10 @@
-main{
+main {
     display: flex;
     justify-content: space-between;
-   padding-top: 43px;
+    padding-top: 43px;
 }
 
-section{
+section {
     width: 550px;
     height: 743px;
     /* border: 1px solid green; */
@@ -12,28 +12,48 @@ section{
     box-shadow: 0px 0px 35px var(--border-1);
 }
 
-section > div{
+/* section > div{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 52px;
     background-color: var(--color-brand);
     position: relative;
+} */
+section>div {
+    height: 52px;
+    overflow: hidden;
+    background: url('../images/arrowBottom.svg') no-repeat right var(--color-brand);
+    border: 1px solid #ccc;
 }
 
-section > div > h3{
+section>div>select {
+    /* <select> */
+    text-align: center;
+    -webkit-appearance: none;
+    background: transparent;
+    /* importante para exibir o novo ícone */
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
     color: var(--color-white);
     font-family: var(--family-2);
     font-weight: var(--weight-2);
     font-size: var(--size-text-2);
+
 }
 
-section > div > img{
+
+
+section>div>img {
     position: absolute;
     right: 14px;
 }
 
-section > ul{
+section>ul {
     display: flex;
     flex-direction: column;
     gap: 22px;
@@ -42,7 +62,7 @@ section > ul{
     background-color: var(--color-grey-1);
 }
 
-ul > li{
+ul>li {
     display: flex;
     flex-direction: column;
     gap: 13px;
@@ -51,15 +71,13 @@ ul > li{
     border-bottom: 1px solid var(--color-brand);
 }
 
-li h4{
+li h4 {
     font-size: var(--size-text-2);
 }
 
-li span{
-    width:fit-content;
+li span {
+    width: fit-content;
     padding: 6px 26px;
     border: 1px solid var(--color-brand);
     border-radius: var(--radius-2);
 }
-
-
