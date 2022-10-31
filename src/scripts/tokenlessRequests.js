@@ -1,5 +1,4 @@
 /* ================= ROTAS QUE NÃO UTILIZAM TOKEN ================== */
-
 import { createToast } from "./toastfy.js";
 
 
@@ -50,7 +49,7 @@ export const login = async (body) => {
 
     try {
         const request = await axios.request(options)
-        
+
         if (request.statusText === "OK") {
             const userId = request.data.token
             localStorage.setItem('@kenzieEmpresas-userId', userId)
@@ -78,23 +77,29 @@ export const login = async (body) => {
 
 
 /* ----------------- LISTAR TODAS AS EMPRESAS ---------------- */
-const listAllCompanys = () => {
+export const getAllCompanys = async() => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/companies',
-        headers: { Authorization: 'Bearer ' }
+        url: 'http://localhost:6278/companies'
     };
 
-    axios.request(options).then(function (response) {
+    try {
+        const request = await axios.request(options)
+        // console.log(request.data)
+        return request.data
+    } catch (error) {
+        console.error(error)
+    }
+    /* axios.request(options).then(function (response) {
         console.log(response.data);
     }).catch(function (error) {
         console.error(error);
-    });
+    }); */
 }
 
 
 /* ----------------- LISTAR EMPRESAS POR SETOR ---------------- */
-const listCompanysBySector = () => {
+export const getCompanysBySector = () => {
     const options = {
         method: 'GET',
         url: 'http://localhost:6278/companies/Alimenticio',

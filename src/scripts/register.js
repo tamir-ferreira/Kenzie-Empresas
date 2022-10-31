@@ -1,4 +1,3 @@
-// import { createToast } from "./toastfy.js"
 import { createUser } from "./tokenlessRequests.js"
 // import axios from "axios";
 
@@ -19,13 +18,12 @@ const eventRegister = () => {
         });
 
         const response = await createUser(body)
-        // console.log(response)
-
         if (response) {
             setTimeout(() => {
                 window.location.replace('../pages/login.html')
                 
             }, 5000);
+            
         } else {
               formElements[1].style.borderColor = "var(--color-alert)"
         }
