@@ -37,7 +37,9 @@
                 <span>Pleno</span>
                 <span>Home Office</span>
             </div> -->
-            <img src="../images/edit-brand.svg" alt="ícone de um lápis">
+            <button id="btn-edit">
+                <img src="../images/edit-brand.svg" alt="ícone de um lápis">
+            </button>
         </section>
         <section class="list-users">
             <h2>Company Name - Department Name</h2>
@@ -74,13 +76,15 @@
     </main>
     <div class="modal-container">
         <div>
-            <img src="../images/close.svg" alt="botão fechar janela de modal">
+            <button id="btn-close" >
+                <img src="../images/close.svg" alt="botão fechar janela de modal">
+            </button>
             <h2>Editar Perfil</h2>
             <form action="">
-                <input type="text" placeholder="Seu nome" required>
-                <input type="email" placeholder="Seu e-mail" required>
-                <input type="password" placeholder="Sua senha" required>
-                <button class="btn-brand">Editar perfil</button>
+                <input name="username" type="text" placeholder="Seu nome">
+                <input name="email" type="email" placeholder="Seu e-mail">
+                <input name="password" type="password" placeholder="Sua senha">
+                <button class="btn-brand">Salvar Alterações</button>
             </form>
         </div>
     </div>

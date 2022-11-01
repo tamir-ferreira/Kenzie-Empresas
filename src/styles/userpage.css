@@ -1,6 +1,7 @@
 .user-info {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: 1px solid var(--border-3);
     margin: 24px 0 53px 0;
     padding: 20px 31px;
@@ -26,12 +27,20 @@
     font-size: var(--size-text-1);
 }
 
+.user-info > button{
+    width:fit-content;
+    height: fit-content;
+    border: none;
+    background: none;
+}
+
+
 .list-users {
     display: flex;
     flex-direction: column;
     /* gap: 58px; */
     background-color: var(--color-grey-1);
-    display: none;
+    /* display: none; */
 }
 
 .empty{
