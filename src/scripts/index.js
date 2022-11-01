@@ -46,4 +46,5 @@ const renderCompanys = async (companies) => {
     });
     // renderSelect()
 }
+// console.log(await getAllCompanys())
 renderCompanys(await getAllCompanys())

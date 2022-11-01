@@ -86,16 +86,17 @@ export const getAllCompanys = async() => {
 
     try {
         const request = await axios.request(options)
-        // console.log(request.data)
         return request.data
     } catch (error) {
         console.error(error)
     }
-    /* axios.request(options).then(function (response) {
-        console.log(response.data);
+    /* const request = axios.request(options).then(function (response) {
+        console.log(response.data)
+        return response.data
     }).catch(function (error) {
         console.error(error);
     }); */
+    return request
 }
 
 

@@ -1,4 +1,4 @@
-.modal-container{
+.modal-container {
     display: none;
     /* flex-direction: column; */
     justify-content: center;
@@ -11,11 +11,11 @@
     top: 0;
 }
 
-.show-modal{
+.show-modal {
     display: flex;
 }
 
-.modal-container > div{
+.modal-container>div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,19 +29,35 @@
     position: relative;
 }
 
-.modal-container > div > img{
+.modal-container>div > button{
     display: flex;
+    width:fit-content;
+    height: fit-content;
+    padding: 5px;
+    border: none;
+    background: none;
     position: absolute;
     top: 22px;
     right: 24px;
 }
 
-.modal-container > div > h2{
+/* .modal-container>div> button>img {
+    display: flex;
+    position: absolute;
+    top: 22px;
+    right: 24px;
+} */
+
+.modal-container>div>img:hover {
+    cursor: pointer;
+}
+
+.modal-container>div>h2 {
     font-size: var(--size-title-2);
     font-family: var(--family-2);
 }
 
-.modal-container > div > form{
+.modal-container>div>form {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -49,29 +65,29 @@
     /* border: 1px solid green; */
 }
 
-.modal-container button{
+.modal-container button {
     width: 100%;
     margin-top: 8px;
     /* font-size: 18px; */
 }
 
-div.modal-departments{
+div.modal-departments {
     display: flex;
     flex-direction: column;
     width: 857px;
 }
 
-div.modal-departments >div{
+div.modal-departments>div {
     display: flex;
     width: 100%;
     justify-content: space-between;
     /* background-color: red; */
     margin-bottom: 37px;
     /* overflow: scroll; */
-    
+
 }
 
-div.modal-departments >div>div:first-child{
+div.modal-departments>div>div:first-child {
     display: flex;
     flex-direction: column;
     /* background-color: red; */
@@ -79,22 +95,23 @@ div.modal-departments >div>div:first-child{
     gap: 11px;
 
 }
-div.modal-departments >div>div:last-child{
+
+div.modal-departments>div>div:last-child {
     display: flex;
     flex-direction: column;
     width: 422px;
     /* background-color: blue; */
 }
 
-div.modal-departments >div>div:last-child button{
+div.modal-departments>div>div:last-child button {
     /* background-color: blue; */
     align-self: flex-end;
-    width:fit-content;
+    width: fit-content;
     /* padding: 0 26px; */
     width: 157px;
 }
 
-div.modal-departments > ul{
+div.modal-departments>ul {
     display: flex;
     flex-direction: row;
     /* border: 1px solid red; */
@@ -105,7 +122,7 @@ div.modal-departments > ul{
     overflow-x: scroll;
 }
 
-div.modal-departments > ul > li{
+div.modal-departments>ul>li {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -116,27 +133,27 @@ div.modal-departments > ul > li{
     /* border: 1px solid blue */
 }
 
-div.modal-departments > ul > li > div{
+div.modal-departments>ul>li>div {
     display: flex;
     flex-direction: column;
     gap: 9px;
     width: 306px;
 }
 
-div.modal-departments > ul > li > button{
+div.modal-departments>ul>li>button {
     align-self: center;
     width: 157px;
 }
 
 
-div.modal-confirmation{
+div.modal-confirmation {
     display: flex;
     flex-direction: column;
     width: 733px;
     padding: 70px 157px 56px 157px;
 }
 
-div.modal-confirmation h3{
+div.modal-confirmation h3 {
     font-size: var(--size-title-5);
     text-align: center;
 }

@@ -1,5 +1,7 @@
 /* ================= FUNCIONÁRIOS (USERS) ================== */
 
+import { createToast } from "./toastfy.js";
+
 
 /* ----------------- BUSCAR INFORMAÇÕES DO FUNCIONÁRIO LOGADO ---------------- */
 export const getUserInformation = async(token) => {
@@ -63,22 +65,37 @@ const listCompanyDepartments = () => {
 
 
 /* ----------------- ATUALIZAR INFORMAÇÕES DO FUNCIONÁRIO ---------------- */
-const updateUserInfo = () => {
+export const updateUserInfo = async(body, token) => {
     const options = {
         method: 'PATCH',
         url: 'http://localhost:6278/users',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiNWEyMDJkYTQtZjE0Yi00NDE4LThmZmQtYTRjN2FiM2MxMTQ1IiwiaXNfYWRtaW4iOmZhbHNlLCJpYXQiOjE2NjY5NjE2MDQsImV4cCI6MTY2NzgyNTYwNCwic3ViIjoiW29iamVjdCBVbmRlZmluZWRdIn0.xY83FhJMTkMETeIbdJedQMFDtEEEXRe3Cb6R28iUY7s'
+            Authorization: `Bearer ${token}`
         },
-        data: { username: 'Kenzinho M2', password: '123456', email: 'kenzinhoM2@mail.com' }
+        // data: { username: 'Kenzinho M2', password: '123456', email: 'kenzinhoM2@mail.com' }
+        data: body
     };
 
-    axios.request(options).then(function (response) {
+    try {
+        const request = await axios.request(options)
+        console.log(request)
+        return true
+
+    } catch (error) {
+        const response = error.response.data.error
+        let message
+        console.error(response)
+        if (response == 'body empty') {
+            message = 'Digite a informação a ser alterada!'
+            createToast(message, false)
+        }
+    }
+   /*  axios.request(options).then(function (response) {
         console.log(response.data);
     }).catch(function (error) {
         console.error(error);
-    });
+    }); */
 }
 
 
