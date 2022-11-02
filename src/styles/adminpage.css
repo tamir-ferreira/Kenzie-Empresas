@@ -2,11 +2,11 @@ h2 {
     font-size: var(--size-title-4);
 }
 
-h4{
+h4 {
     font-size: var(--size-text-2);
 }
 
-span{
+span {
     font-size: var(--size-text-3);
 }
 
@@ -43,6 +43,10 @@ span{
     gap: 16px;
 }
 
+.departments>div>button>span {
+    color: var(--color-white);
+}
+
 .list-departments,
 .list-employees {
     display: flex;
@@ -56,19 +60,20 @@ span{
     overflow-y: scroll;
 }
 
-.list-departments > li,
-.list-employees > li{
+.list-departments>li,
+.list-employees>li {
     display: flex;
     flex-direction: column;
     background-color: var(--color-white);
     width: 489px;
+    height: 196px;
     padding: 20px 29px;
     gap: 10px;
     border-bottom: 1px solid var(--color-brand);
 }
 
-.list-departments > li > div,
-.list-employees > li > div{
+.list-departments>li>div,
+.list-employees>li>div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +81,16 @@ span{
     margin-top: 20px;
 }
 
-section:last-child > h2{
+.list-departments>li>div>button,
+.list-employees>li>div>button {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background: none;
+}
+
+section:last-child>h2 {
     text-align: center;
     margin-bottom: 16px;
 }

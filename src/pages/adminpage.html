@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../styles/buttons.css">
     <link rel="stylesheet" href="../styles/modal.css">
     <link rel="stylesheet" href="../styles/adminPage.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script defer type="module" src='../scripts/adminPage.js'></script>
     <title>Kenzie Empresas - Administrador</title>
 </head>
@@ -21,7 +22,7 @@
             <img src="../images/logo.svg" alt="logotipo kenzie empresas">
             <nav>
                 <a href="../pages/login.html">
-                    <button class="btn-outline">Logout</button>
+                    <button id="btn-logout" class="btn-outline">Logout</button>
                 </a>
             </nav>
         </div>
@@ -31,24 +32,22 @@
             <div>
                 <h2>Departamentos</h2>
                 <div>
-                    <select name="" id="">
+                    <select name="" id="companies">
+                        <!-- <option value="">Selecionar Empresa</option>
                         <option value="">Selecionar Empresa</option>
-                        <option value="">Selecionar Empresa</option>
-                        <option value="">Selecionar Empresa</option>
+                        <option value="">Selecionar Empresa</option> -->
                     </select>
                 </div>
                 <button class="btn-brand">
                     <img src="../images/plus.svg" alt="sinal de mais">
-                    Criar
+                    <span>Criar</span> 
                 </button>
             </div>
             <ul class="list-departments">
-                <li>
-                    <!-- <div> -->
+                <!-- <li>
                     <h4>Department Name</h4>
                     <span>Department Description</span>
                     <span>Company Name</span>
-                    <!-- </div> -->
                     <div>
                         <img src="../images/eye.svg" alt="ícone de um olho">
                         <img src="../images/edit-black.svg" alt="ícone de um lápis">
@@ -56,11 +55,9 @@
                     </div>
                 </li>
                 <li>
-                    <!-- <div> -->
                     <h4>Department Name</h4>
                     <span>Department Description</span>
                     <span>Company Name</span>
-                    <!-- </div> -->
                     <div>
                         <img src="../images/eye.svg" alt="ícone de um olho">
                         <img src="../images/edit-black.svg" alt="ícone de um lápis">
@@ -68,23 +65,21 @@
                     </div>
                 </li>
                 <li>
-                    <!-- <div> -->
                     <h4>Department Name</h4>
                     <span>Department Description</span>
                     <span>Company Name</span>
-                    <!-- </div> -->
                     <div>
                         <img src="../images/eye.svg" alt="ícone de um olho">
                         <img src="../images/edit-black.svg" alt="ícone de um lápis">
                         <img src="../images/trash.svg" alt="ícone de uma lixeira">
                     </div>
-                </li>
+                </li> -->
             </ul>
         </section>
         <section>
             <h2>Usuários cadastrados</h2>
             <ul class="list-employees">
-                <li>
+                <!-- <li>
                     <h4>Username</h4>
                     <span>Pleno</span>
                     <span>Company Name</span>
@@ -110,7 +105,7 @@
                         <img src="../images/edit-brand.svg" alt="ícone de um lápis">
                         <img src="../images/trash.svg" alt="ícone de uma lixeira">
                     </div>
-                </li>
+                </li> -->
 
             </ul>
             <!--         </section>
@@ -119,7 +114,7 @@
         </div> -->
     </main>
     <div class="modal-container">
-        <div class="modal-departments">
+        <div class="modal-departments" >
             <img src="../images/close.svg" alt="botão fechar janela de modal">
             <h2>Nome do departamento</h2>
             <div>
