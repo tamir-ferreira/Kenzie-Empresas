@@ -12,7 +12,7 @@ export const listAllUsers = (token) => {
     };
 
     const request = axios.request(options).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -40,40 +40,44 @@ const listWithoutDepartment = () => {
 
 
 /* ----------------- ATUALIZAR INFORMAÇÕES DO FUNCIONÁRIO ---------------- */
-const updateUserInfoByAdmin = () => {
+export const updateUserInfoByAdmin = (token, id, body) => {
     const options = {
         method: 'PATCH',
-        url: 'http://localhost:6278/admin/update_user/5a202da4-f14b-4418-8ffd-a4c7ab3c1145',
+        url: `http://localhost:6278/admin/update_user/${id}`,
         headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         },
-        data: { kind_of_work: 'presencial', professional_level: 'pleno' }
+        data: body
     };
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
+    const request = axios.request(options).then(function (response) {
+        // console.log(response.data);
+        return response
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
 /* ----------------- DELETAR FUNCIONÁRIO ---------------- */
-const deleteUser = () => {
+export const deleteUser = (token, id) => {
     const options = {
         method: 'DELETE',
-        url: 'http://localhost:6278/admin/delete_user/5a202da4-f14b-4418-8ffd-a4c7ab3c1145',
+        url: `http://localhost:6278/admin/delete_user/${id}`,
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         }
     };
 
-    axios.request(options).then(function (response) {
+    const request = axios.request(options).then(function (response) {
         console.log(response.data);
+        return response
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
@@ -136,7 +140,7 @@ export const listAllDepartmentsByCompany = (token, companyID) => {
         }
     };
     const request = axios.request(options).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -146,26 +150,29 @@ export const listAllDepartmentsByCompany = (token, companyID) => {
 
 
 /* ----------------- CRIAR DEPARTAMENTO -------------------*/
-const createDepartment = () => {
+export const createDepartment = (token, body) => {
     const options = {
         method: 'POST',
         url: 'http://localhost:6278/departments',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         },
-        data: {
+        /* data: {
             name: 'Ensino',
             description: 'Equipe responsável para ensinar os alunos',
             company_uuid: '85b7393b-ad59-4550-964b-0aaf796243f1'
-        }
+        } */
+        data: body
     };
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
+    const request = axios.request(options).then(function (response) {
+        // console.log(response.data);
+        return response
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
@@ -211,38 +218,42 @@ const dismissEmployee = () => {
 
 
 /* ----------------- EDITAR DEPARTAMENTO -------------------*/
-const editDepartment = () => {
+export const editDepartment = (token, id, body) => {
     const options = {
         method: 'PATCH',
-        url: 'http://localhost:6278/departments/e66f05d9-6093-4e32-9f70-4bcc213e53a5',
+        url: `http://localhost:6278/departments/${id}`,
         headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         },
-        data: { description: 'Novo departamento de TI' }
+        data: body
     };
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
+    const request = axios.request(options).then(function (response) {
+        // console.log(response.data);
+        return response
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
 /* ----------------- DELETAR DEPARTAMENTO -------------------*/
-const deletDepartment = () => {
+export const deleteDepartment = (token, id) => {
     const options = {
         method: 'DELETE',
-        url: 'http://localhost:6278/departments/f38d1fd3-7add-4b09-8ea9-ab2424e25f93',
+        url: `http://localhost:6278/departments/${id}`,
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjdjOTc4Y2MtMzhhNi00NzMzLTk5YTYtZmVmYjkwZWJjNzEyIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2MjEyNDEzOCwiZXhwIjoxNjYyOTg4MTM4LCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.m4vRB3gWfnCBcELPgqan-EfIgRehpvgtZvCP3PSuG4k'
+            Authorization: `Bearer ${token}`
         }
     };
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
+    const request = axios.request(options).then(function (response) {
+        // console.log(response.data);
+        return response
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
