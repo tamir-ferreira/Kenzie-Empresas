@@ -1,6 +1,14 @@
-import { logout } from "./adminPage.js"
+// import { logout } from "./adminPage.js"
 import { getUserInformation, updateUserInfo } from "./employeesRequests.js"
 
+
+export const logout = () => {
+    const btnLogout = document.querySelector('#btn-logout')
+    btnLogout.onclick = () => {
+        localStorage.removeItem('@kenzieEmpresas-userId')
+        window.location.replace('./login.html')
+    }
+}
 
 
 const editProfile = (profile) => {
@@ -28,28 +36,36 @@ const editProfile = (profile) => {
         console.log(response)
 
         if (response) {
-            document.location.reload(true)
+            // document.location.reload(true)
+            reloadUser()
+            // renderUserInfo()
         }
     }
 }
 
+const reloadUser = async () => {
+    // console.log('reload')
+    renderUserInfo()
+    document.querySelector('.modal-container').classList.toggle('hide-modal')
+}
 
 const renderUserInfo = async () => {
-    const userInfo = document.querySelector('.user-info')
+    const userInfo = document.querySelector('.user-info >div')
     const token = localStorage.getItem('@kenzieEmpresas-userId')
     const profile = await getUserInformation(token)
     // console.log(userData)
     const { username, email, professional_level, kind_of_work } = profile
+    userInfo.innerHTML = ''
 
     userInfo.insertAdjacentHTML('afterbegin',
-        `<div>
+        `
             <div>
                 <h1>${username}</h1>
                 <span>Email: ${email}</span>
             </div>
             <span>${professional_level || ''}</span>
             <span>${kind_of_work || ''}</span>
-        </div>
+        
         `
     )
 
@@ -57,10 +73,10 @@ const renderUserInfo = async () => {
     const modal = document.querySelector('.modal-container')
 
     btnEdit.onclick = () => {
-        modal.classList.add('show-modal')
+        modal.classList.toggle('hide-modal')
         const btnClose = document.querySelector('#btn-close')
         btnClose.onclick = () => {
-            modal.classList.remove('show-modal')
+            modal.classList.toggle('hide-modal')
         }
         editProfile(profile)
     }
