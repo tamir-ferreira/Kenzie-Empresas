@@ -1,12 +1,7 @@
+import { logout } from "./adminPage.js"
 import { getUserInformation, updateUserInfo } from "./employeesRequests.js"
 
-const logout = () => {
-    const btnLogout = document.querySelector('#btn-logout')
-    btnLogout.onclick = () => {
-        localStorage.removeItem('@kenzieEmpresas-userId')
-        window.location.replace('../../index.html')
-    }
-}
+
 
 const editProfile = (profile) => {
     const token = localStorage.getItem('@kenzieEmpresas-userId')
