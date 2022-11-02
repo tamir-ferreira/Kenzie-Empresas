@@ -87,8 +87,17 @@ select {
   cursor: pointer;
 }
 
+textarea{
+  resize:none;
+  outline: none;
+  padding: 20px;
+  font-size: var(--size-text-3);
+  overflow:hidden;
+}
+
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
   border: 1px solid var(--color-brand);
 }
 
