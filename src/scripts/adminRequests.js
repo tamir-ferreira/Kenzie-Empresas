@@ -1,22 +1,23 @@
 /* ================= ADMINISTRADOR ================== */
-import axios from "axios";
 
 
 /* ----------------- LISTAR TODOS OS USUÁRIOS ---------------- */
-const listAllUsers = () => {
+export const listAllUsers = (token) => {
     const options = {
         method: 'GET',
         url: 'http://localhost:6278/users',
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         }
     };
 
-    axios.request(options).then(function (response) {
+    const request = axios.request(options).then(function (response) {
         console.log(response.data);
+        return response.data
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
@@ -104,40 +105,43 @@ const registerCompany = () => {
 /* ================= DEPARTAMENTOS ================= */
 
 /* ----------------- LISTAR TODOS OS DEPARTAMENTOS -------------------*/
-const listAllDepartments = () => {
+export const listAllDepartments = (token) => {
     const options = {
         method: 'GET',
         url: 'http://localhost:6278/departments',
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         }
     };
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
+    const request = axios.request(options).then(function (response) {
+        // console.log(response.data);
+        return response.data
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
 /* ----------------- LISTAR TODOS OS DEPARTAMENTOS DE UM EMPRESA  ESPECÍFICA -------------------*/
 
 /* VERIFICAR SE PRECISA OU NÃO USAR */
-const listAllDepartmentsByCompany = () => {
+export const listAllDepartmentsByCompany = (token, companyID) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/departments/b11aae6d-3f9d-4b9b-a119-6a62e9a494f8',
+        url: `http://localhost:6278/departments/${companyID}`,
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         }
     };
-
-    axios.request(options).then(function (response) {
+    const request = axios.request(options).then(function (response) {
         console.log(response.data);
+        return response.data
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
