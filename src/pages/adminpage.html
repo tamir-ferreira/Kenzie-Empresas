@@ -33,14 +33,12 @@
                 <h2>Departamentos</h2>
                 <div>
                     <select name="" id="companies">
-                        <!-- <option value="">Selecionar Empresa</option>
-                        <option value="">Selecionar Empresa</option>
-                        <option value="">Selecionar Empresa</option> -->
+                        <!-- RENDERIZADO PELO JS -->
                     </select>
                 </div>
-                <button class="btn-brand">
+                <button id="create-department" class="btn-brand">
                     <img src="../images/plus.svg" alt="sinal de mais">
-                    <span>Criar</span> 
+                    <span>Criar</span>
                 </button>
             </div>
             <ul class="list-departments">
@@ -81,7 +79,7 @@
             <ul class="list-employees">
                 <!-- <li>
                     <h4>Username</h4>
-                    <span>Pleno</span>
+                    <span></span>
                     <span>Company Name</span>
                     <div>
                         <img src="../images/edit-brand.svg" alt="ícone de um lápis">
@@ -108,14 +106,16 @@
                 </li> -->
 
             </ul>
-            <!--         </section>
-        <div class="empty">
+        </section>
+        <!--<div class="empty">
             <h2>Você ainda não foi contratado</h2>
         </div> -->
     </main>
-    <div class="modal-container">
+    <!-- <div id="view-modal" class="modal-container hide-modal">
         <div class="modal-departments" >
-            <img src="../images/close.svg" alt="botão fechar janela de modal">
+            <button id="btn-close-view">
+                <img src="../images/close.svg" alt="botão fechar janela de modal">
+            </button>
             <h2>Nome do departamento</h2>
             <div>
                 <div>
@@ -131,7 +131,7 @@
                     <button class="btn-success">Contratar</button>
                 </div>
             </div>
-            <ul>
+            <ul class="list-employees-department">
                 <li>
                     <div>
                         <h4>Username</h4>
@@ -159,36 +159,8 @@
             </ul>
 
         </div>
-    </div>
-
-    <!-- <div class="modal-container">
-        <div>
-            <img src="../images/close.svg" alt="botão fechar janela de modal">
-            <h2>Editar Perfil</h2>
-            <form action="">
-                <input type="text" placeholder="Seu nome" required>
-                <input type="email" placeholder="Seu e-mail" required>
-                <input type="password" placeholder="Sua senha" required>
-                <button class="btn-brand">Editar perfil</button>
-            </form>
-        </div>
     </div> -->
 
-    <div class="modal-container">
-        <div class="modal-confirmation">
-            <img src="../images/close.svg" alt="botão fechar janela de modal">
-            <h3>Realmente deseja remover o usuário NOME?</h3>
-            <button class="btn-success">Confirmar</button>
-        </div>
-    </div>
-
-    <div class="modal-container">
-        <div class="modal-confirmation">
-            <img src="../images/close.svg" alt="botão fechar janela de modal">
-            <h3>Realmente deseja deletar o Departamento NOME e demitir seus funcionários?</h3>
-            <button class="btn-success">Confirmar</button>
-        </div>
-    </div>
 </body>
 
 </html>

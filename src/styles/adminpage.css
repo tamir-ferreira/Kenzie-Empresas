@@ -81,6 +81,10 @@ span {
     margin-top: 20px;
 }
 
+/* .list-employees>li>div{
+    background-color: red;
+} */
+
 .list-departments>li>div>button,
 .list-employees>li>div>button {
     display: flex;
