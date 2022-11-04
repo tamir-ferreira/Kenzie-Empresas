@@ -1,13 +1,15 @@
-import { createDepartment, deleteDepartment, deleteUser, editDepartment, listAllDepartments, listAllDepartmentsByCompany, listAllUsers, updateUserInfoByAdmin } from "./adminRequests.js"
+import { createDepartment, deleteDepartment, deleteUser, dismissEmployee, editDepartment, hireEmployee, listAllDepartments, listAllDepartmentsByCompany, listAllUsers, listWithoutDepartment, updateUserInfoByAdmin } from "./adminRequests.js"
+import { checkUserType } from "./employeesRequests.js"
 import { modalCreateDepartment, modalDeleteDepartment, modalDeleteEmployees, modalEditDepartment, modalEditEmployee, modalViewDepartment } from "./modal.js"
 import { getAllCompanys } from "./tokenlessRequests.js"
 const token = localStorage.getItem('@kenzieEmpresas-userId')
 
 const logout = () => {
     const btnLogout = document.querySelector('#btn-logout')
-    btnLogout.onclick = () => {
+    btnLogout.onclick = (event) => {
+        event.preventDefault()
         localStorage.removeItem('@kenzieEmpresas-userId')
-        window.location.replace('./login.html')
+        window.location.replace('../../index.html')
     }
 }
 
@@ -16,10 +18,7 @@ const closeModal = () => {
     const modal = document.querySelector('.modal-container')
     const btnClose = document.querySelector('#btn-close')
 
-    btnClose.onclick = () => {
-        // console.log('click')
-        modal.remove()
-    }
+    btnClose.onclick = () => modal.remove()
 }
 
 
@@ -28,21 +27,15 @@ const eventDeleteEmployee = () => {
 
     btnsDelete.forEach(button => {
         button.onclick = () => {
-            // console.log('ok')
             const id = button.getAttribute('data-delete-users-id')
             const name = button.getAttribute('data-delete-name')
 
             modalDeleteEmployees(name)
 
-            console.log(id)
             const btnConfirm = document.querySelector('#btn-confirm')
-            btnConfirm.onclick = async() =>{
-                // console.log('ok')
+            btnConfirm.onclick = async () => {
                 const response = await deleteUser(token, id)
-                // console.log(response)
-                if (response.statusText == "No Content") {
-                    reloadEmployees()
-                }
+                if (response.statusText == "No Content") await reloadEmployees()
             }
 
             closeModal()
@@ -61,23 +54,18 @@ const eventEditEmployees = () => {
             modalEditEmployee()
             const form = document.querySelector('form')
             const [...formElements] = form
-            // console.log(form)
             const body = {}
+
             form.onsubmit = async (event) => {
                 event.preventDefault()
-
                 formElements.forEach(element => {
-                    // console.log(element);
                     if (element.tagName == 'SELECT' && element.value != '') {
                         body[element.name] = element.value
                     }
                 });
-                
+
                 const response = await updateUserInfoByAdmin(token, id, body)
-                if (response.statusText == 'OK') {
-                    // console.log(response)
-                    reloadEmployees()
-                }
+                if (response.statusText == 'OK') await reloadEmployees()
             }
 
             closeModal()
@@ -87,23 +75,47 @@ const eventEditEmployees = () => {
 
 
 const eventViewDepartment = (departments) => {
-    // const viewModal = document.querySelector('#view-modal')
     const btnsView = document.querySelectorAll('[data-view]')
-    // console.log(btnsView)
 
     btnsView.forEach(button => {
         const id = button.getAttribute('data-view')
-
-        button.onclick = () => {
-            // const modal = document.querySelector('.modal-container')
-            const listEmployees = document.querySelector('list-employees-department')
+        button.onclick = async () => {
 
             const departmentSelected = departments.filter(
                 department => department.uuid == id
             )
 
-            // console.log(departmentSelected)
-            modalViewDepartment(departmentSelected)
+            const outOfWork = await listWithoutDepartment(token)
+            const employees = await listAllUsers(token)
+
+            modalViewDepartment(departmentSelected, outOfWork, employees)
+
+            const form = document.querySelector('form')
+            const select = document.querySelector('#out-of-work')
+            const body = {}
+
+            form.onsubmit = async (event) => {
+                event.preventDefault()
+                body[select.name] = select.value
+                body["department_uuid"] = departmentSelected[0].uuid
+
+                const response = await hireEmployee(token, body)
+
+                if (response.statusText == 'OK') reloadEmployees()
+            }
+
+            const btnsDismiss = document.querySelectorAll('[data-dismiss]')
+            btnsDismiss.forEach(btn => {
+                btn.onclick = async () => {
+                    const id = btn.getAttribute('data-dismiss')
+                    const response = await dismissEmployee(token, id)
+
+                    if (response.statusText == 'OK') {
+                        await reloadEmployees()
+                        await reloadDepartments()
+                    }
+                }
+            })
 
             closeModal()
         }
@@ -113,25 +125,27 @@ const eventViewDepartment = (departments) => {
 
 const eventDeleteDepartment = () => {
     const btnsDelete = document.querySelectorAll('[data-delete-department]')
-
-
     btnsDelete.forEach(button => {
-        button.onclick = () => {
-            // console.log('ok')
-            // console.log(button)
-            const id = button.getAttribute('data-delete-department')
+        button.onclick = async () => {
+            const idDepartment = button.getAttribute('data-delete-department')
             const name = button.getAttribute('data-delete-name')
-            // console.log(name)
+            const employees = await listAllUsers(token)
+
             modalDeleteDepartment(name)
 
             const btnConfirm = document.querySelector('#btn-confirm')
             btnConfirm.onclick = async () => {
-                const response = await deleteDepartment(token, id)
-                // console.log(response)
-                if (response.statusText == 'No Content') {
-                    reloadDepartments()
-                    /* FALTA DEMITIR OS FUNCIONÁRIOS */
+                employees.forEach(employee => {
+                    if (employee.department_uuid == idDepartment) {
+                        dismissEmployee(token, employee.uuid)
+                    }
+                });
 
+                const response = await deleteDepartment(token, idDepartment)
+
+                if (response.statusText == 'No Content') {
+                    await reloadEmployees()
+                    await reloadDepartments()
                 }
             }
 
@@ -143,10 +157,8 @@ const eventDeleteDepartment = () => {
 
 const eventEditDepartment = () => {
     const btnsEdit = document.querySelectorAll('[data-edit-description]')
-    // console.log(btnsDepartment)
     btnsEdit.forEach(button => {
         button.onclick = () => {
-            // console.log('ok')
             const id = button.getAttribute('data-edit-id')
             const description = button.getAttribute('data-edit-description')
 
@@ -157,14 +169,11 @@ const eventEditDepartment = () => {
 
             btnEdit.onclick = async () => {
                 body['description'] = document.querySelector('textarea').value
-                // console.log(body)
                 const response = await editDepartment(token, id, body)
-                // console.log(response)
-                if (response.statusText == 'OK') {
-                    // document.location.reload(true);
-                    reloadDepartments()
-                }
+
+                if (response.statusText == 'OK') await reloadDepartments()
             }
+
             closeModal()
         }
     });
@@ -174,12 +183,18 @@ const eventEditDepartment = () => {
 const eventCreateDepartment = (companies) => {
     const btnCreate = document.querySelector('#create-department')
     btnCreate.onclick = () => {
-        modalCreateDepartment(companies)
+        const companySelected = document.querySelector('#companies')
+
+        if (companySelected.value != '') {
+            const findCompany = companies.find(company => company.uuid == companySelected.value)
+            modalCreateDepartment(companies, findCompany.name)
+
+        } else modalCreateDepartment(companies, null)
+        
         const form = document.querySelector('form')
         const [...formElements] = form
         const body = {}
 
-        // console.log(companies)
         form.onsubmit = async (event) => {
             event.preventDefault()
 
@@ -187,47 +202,46 @@ const eventCreateDepartment = (companies) => {
                 if (element.tagName == 'SELECT') {
                     const select = companies.find(company => element.value == company.name)
                     body[element.name] = select.uuid
-                    // console.log(select)
-                }
+                  }
 
-
-                if (element.tagName == 'INPUT') {
-                    body[element.name] = element.value
-                }
+                if (element.tagName == 'INPUT') body[element.name] = element.value
             });
-            // console.log(body)
-            const response = await createDepartment(token, body)
-            if (response.statusText == 'Created') {
-                // document.location.reload(true);
-                reloadDepartments()
-            }
 
+            const response = await createDepartment(token, body)
+            if (response.statusText == 'Created') await reloadDepartments()
         }
+
         closeModal()
     }
 }
 
+
 const reloadDepartments = async () => {
-    renderDepartments(await listAllDepartments(token))
-    document.querySelector('.modal-container').remove()
+    const select = document.querySelector('#companies')
+    if (select.value == '') {
+        renderDepartments(await listAllDepartments(token))
 
+    } else {
+        const filteredDepartments = await listAllDepartmentsByCompany(token, select.value)
+        await renderDepartments(filteredDepartments)
+    }
+
+    const modal = document.querySelector('.modal-container')
+    if (modal != null) modal.remove()
 }
+
+
 const reloadEmployees = async () => {
-    // console.log('reload')
-    renderEmployees(await listAllUsers(token))
-    document.querySelector('.modal-container').remove()
+    renderEmployees(await listAllUsers(token), await listAllDepartments(token))
+    const modal = document.querySelector('.modal-container')
+    if (modal != null) modal.remove()
 }
-
-
-
 
 
 const renderSelect = async () => {
     const select = document.querySelector('#companies')
     const allCompanies = await getAllCompanys()
     let option = document.createElement('option')
-
-    // console.log(allCompanies)
 
     select.innerHTML = ''
     select.appendChild(option)
@@ -236,40 +250,27 @@ const renderSelect = async () => {
 
     allCompanies.forEach(company => {
         const { name, uuid } = company
-        // console.log(name)
         select.append(option)
         option = document.createElement('option')
         option.innerText = name
         option.value = uuid
     })
 
-    select.onchange = async () => {
-        console.log(select.value)
-        const filteredDepartments = await listAllDepartmentsByCompany(token, select.value)
-        // console.log(filteredDepartments)
-
-        await renderDepartments(filteredDepartments)
-    }
+    select.onchange = async () => reloadDepartments()
 
     eventCreateDepartment(allCompanies)
     logout()
 }
-renderSelect()
+
 
 
 const renderDepartments = async (departments) => {
     const list = document.querySelector('.list-departments')
-    // const companies = await getAllCompanys()
     list.innerHTML = ''
 
-    // console.log(departments)
-
     departments.forEach(department => {
-        // console.log(department)
         const { name, description, uuid } = department
-        // const { companies } = department.companies.name
 
-        // console.log(uuid)
         list.insertAdjacentHTML('beforeend',
             `<li>
                 <h4>${name}</h4>
@@ -294,38 +295,83 @@ const renderDepartments = async (departments) => {
     eventEditDepartment()
     eventDeleteDepartment()
 }
-renderDepartments(await listAllDepartments(token))
 
 
-const renderEmployees = async (employees) => {
+
+const renderEmployees = async (employees, departments) => {
     const list = document.querySelector('.list-employees')
-    // const companies = await getAllCompanys()
     list.innerHTML = ''
 
     employees.forEach(employee => {
-        // console.log(employee)
-        const { username, professional_level, uuid } = employee
-        // const { companies } = department.companies.name
+        const { username, professional_level, uuid, is_admin
+        } = employee
+        let company = 'não está contratado(a)'
 
-        // console.log(companies)
-        list.insertAdjacentHTML('beforeend',
-            `<li>
+        departments.forEach(department => {
+            if (employee.department_uuid == department.uuid) {
+                company = department.companies.name
+            }
+        });
+
+        if (!is_admin) {
+            list.insertAdjacentHTML('beforeend',
+                `<li>
                 <h4>${username}</h4>
                 <span>${professional_level || "nível não informado"}</span>
-                <span>Company Name</span>
+                <span>${company}</span>
                 <div>
-                    <button data-edit-users-id=${uuid}>
+                <button data-edit-users-id=${uuid}>
                         <img src="../images/edit-brand.svg" alt="ícone de um lápis">
-                    </button>
+                        </button>
                     <button data-delete-users-id=${uuid} data-delete-name=${username}>
                         <img src="../images/trash.svg" alt="ícone de uma lixeira">
                     </button>
                 </div>
             </li>
             `
-        )
+            )
+        }
     });
     eventEditEmployees()
     eventDeleteEmployee()
 }
-renderEmployees(await listAllUsers(token))
+
+
+export const renderEmployeesByDepartment = (employees, uuid, company) => {
+    const listEmployees = document.querySelector('.list-employees-department')
+
+    listEmployees.innerHTML = ''
+    employees.forEach(employee => {
+        if (employee.department_uuid == uuid) {
+            listEmployees.insertAdjacentHTML('beforeend',
+                `<li>
+                    <div>
+                        <h4>${employee.username}</h4>
+                        <span>${employee.professional_level}</span>
+                        <span>${company}</span>
+                    </div>
+                    <button data-dismiss="${employee.uuid}" class="btn-alert">Desligar</button>
+                </li>
+                `
+            )
+        }
+    })
+}
+
+/* --------------- VERIFICA SE O USUÁRIO ESTÁ LOGADO -------------- */
+const verifyPermission = async () => {
+    if (token == '' || token == null) {
+        window.location.replace('../../index.html')
+    } else {
+        const isAdmin = await checkUserType(token)
+
+        if (!isAdmin) {
+            window.location.replace('./userPage.html')
+        } else {
+            renderSelect()
+            renderDepartments(await listAllDepartments(token))
+            renderEmployees(await listAllUsers(token), await listAllDepartments(token))
+        }
+    }
+}
+verifyPermission()
