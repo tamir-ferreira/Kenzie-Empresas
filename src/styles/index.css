@@ -24,27 +24,29 @@ section {
 } */
 section>div {
     height: 52px;
-    /* width: 100.3%; */
     overflow: hidden;
     background: url('../images/arrowBottom.svg') no-repeat center var(--color-brand);
     background-position-x: 505px;
-    /* border: 1px solid #ccc; */
 }
 
 section>div>select {
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     text-align: center;
     background: transparent;
+    height: 100%;
     width: 100%;
     padding: 5px;
-    font-size: 16px;
     line-height: 1;
-    border: 0;
-    border-radius: 0;
     color: var(--color-white);
     font-family: var(--family-2);
     font-weight: var(--weight-2);
     font-size: var(--size-text-2);
+}
+
+section>div>select>option {
+    font-family: var(--family-2);
 }
 
 
