@@ -22,20 +22,22 @@ export const listAllUsers = (token) => {
 
 
 /* ----------------- LISTAR USUÁRIOS SEM DEPARTAMENTO ---------------- */
-const listWithoutDepartment = () => {
+export const listWithoutDepartment = (token) => {
     const options = {
         method: 'GET',
         url: 'http://localhost:6278/admin/out_of_work',
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         }
     };
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
+    const request = axios.request(options).then(function (response) {
+        // console.log(response.data);
+        return response.data
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
@@ -72,7 +74,6 @@ export const deleteUser = (token, id) => {
     };
 
     const request = axios.request(options).then(function (response) {
-        console.log(response.data);
         return response
     }).catch(function (error) {
         console.error(error);
@@ -158,11 +159,6 @@ export const createDepartment = (token, body) => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        /* data: {
-            name: 'Ensino',
-            description: 'Equipe responsável para ensinar os alunos',
-            company_uuid: '85b7393b-ad59-4550-964b-0aaf796243f1'
-        } */
         data: body
     };
 
@@ -177,43 +173,48 @@ export const createDepartment = (token, body) => {
 
 
 /* ----------------- CONTRATAR FUNCIONÁRIO -------------------*/
-const hireEmployee = () => {
+export const hireEmployee = (token, body) => {
     const options = {
         method: 'PATCH',
         url: 'http://localhost:6278/departments/hire/',
         headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         },
-        data: {
+        /* data: {
             user_uuid: '18c1e797-420e-414c-a521-a78c71e4d4d5',
             department_uuid: 'e66f05d9-6093-4e32-9f70-4bcc213e53a5'
-        }
+        } */
+        data: body
     };
 
-    axios.request(options).then(function (response) {
+    const request = axios.request(options).then(function (response) {
         console.log(response.data);
+        return response
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
-/* ----------------- DISPENSAR FUNCIONÁRIO -------------------*/
-const dismissEmployee = () => {
+/* ----------------- DEMITIR FUNCIONÁRIO -------------------*/
+export const dismissEmployee = (token, id) => {
     const options = {
         method: 'PATCH',
-        url: 'http://localhost:6278/departments/dismiss/18c1e797-420e-414c-a521-a78c71e4d4d5',
+        url: `http://localhost:6278/departments/dismiss/${id}`,
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
+            Authorization: `Bearer ${token}`
         }
     };
 
-    axios.request(options).then(function (response) {
+    const request = axios.request(options).then(function (response) {
         console.log(response.data);
+        return response
     }).catch(function (error) {
         console.error(error);
     });
+    return request
 }
 
 
