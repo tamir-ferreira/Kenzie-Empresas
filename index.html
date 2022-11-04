@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./src/styles/globalStyles.css">
     <link rel="stylesheet" href="./src/styles/buttons.css">
     <link rel="stylesheet" href="./src/styles/index.css">
+    <link rel="stylesheet" href="./src/styles/globalMobile.css">
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script defer type="module" src='./src/scripts/index.js'></script>
     <title>Kenzie Empresas - Home</title>
@@ -19,7 +20,7 @@
     <header>
         <div class="container">
             <img src="./src/images/logo.svg" alt="logotipo kenzie empresas">
-            <nav>
+            <nav class="">
                 <a href="./src/pages/login.html">
                     <button class="btn-outline">Login</button>
                 </a>
@@ -28,21 +29,23 @@
                 </a>
             </nav>
         </div>
+        <button class="show-menu" id="open-menu">
+            <img src="./src/images/open.svg" alt="botão de abrir menu">
+        </button>
+        <button class="" id="close-menu">
+            <img src="./src/images/close.svg" alt="botão de fechar menu">
+        </button>
     </header>
-    <main class="container">
+    <main class="container main-index">
         <img src="./src/images/image1.png" alt="pessoas em uma reunião">
         <section>
             <div>
                 <select name="" id="sectors">
-                    <!-- <option value="">Selecionar Setor</option> -->
-                    <!-- <option value="">teste1</option>
-                    <option value="">teste2</option> -->
+                    <!-- RENDERIZADO PELO JS -->
                 </select>
-                <!-- <h3>Selecionar Setor</h3> -->
-                <!-- <img src="./src/images/arrowBottom.svg" alt="seta para baixo"> -->
             </div>
             <ul>
-              <!-- RENDERIZADO PELO JS -->
+                <!-- RENDERIZADO PELO JS -->
             </ul>
         </section>
     </main>

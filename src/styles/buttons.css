@@ -5,6 +5,13 @@ button{
     height: 48px;
     font-size: var(--size-text-3);
     font-weight: var(--weight-1);
+    transition: 0.1s ease-in;
+}
+
+button:hover{
+    /* opacity: 0.75; */
+    transform:scale(0.95);
+    /* box-shadow: 2px 2px 5px black; */
 }
 .btn-brand{
     background: var(--color-brand);

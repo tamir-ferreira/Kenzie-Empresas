@@ -1,5 +1,8 @@
 import { checkUserType } from "./employeesRequests.js"
+import { toggleMenu } from "./menuMobile.js"
 import { login } from "./tokenlessRequests.js"
+
+toggleMenu()
 
 const eventLogin = () => {
     const form = document.querySelector('form')

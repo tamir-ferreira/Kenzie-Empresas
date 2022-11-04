@@ -42,12 +42,6 @@
     right: 20px;
 }
 
-/* .modal-container>div> button>img {
-    display: flex;
-    position: absolute;
-    top: 22px;
-    right: 24px;
-} */
 
 .modal-container>div>img:hover {
     cursor: pointer;

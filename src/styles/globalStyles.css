@@ -67,6 +67,12 @@ nav {
   gap: 11px;
 }
 
+#close-menu,
+#open-menu {
+  /* com menu inativo */
+  display: none;
+}
+
 ul {
   list-style: none;
 }
@@ -87,12 +93,12 @@ select {
   cursor: pointer;
 }
 
-textarea{
-  resize:none;
+textarea {
+  resize: none;
   outline: none;
   padding: 20px;
   font-size: var(--size-text-3);
-  overflow:hidden;
+  overflow: hidden;
 }
 
 input:focus,
@@ -106,7 +112,7 @@ textarea:focus {
   margin: 0 auto;
 }
 
-.toast{
+.toast {
   display: flex;
   padding: 0 20px;
   justify-content: center;
@@ -115,10 +121,11 @@ textarea:focus {
   height: 68px;
   border-radius: var(--radius-3);
   position: fixed;
-  right: 10px;
-  bottom: 10px;
+  right: 20px;
+  top: 20px;
   /* transform: translateY(80px); */
   animation: 1s toast ease-in-out;
+  z-index: 3;
 }
 
 .toast>h4,
@@ -130,11 +137,11 @@ textarea:focus {
   font-size: var(--size-text-5);
 }
 
-.toast-error{
+.toast-error {
   background-color: var(--color-alert);
 }
 
-.toast-ok{
+.toast-ok {
   background-color: var(--color-success);
 }
 
@@ -157,58 +164,15 @@ textarea:focus {
 }
 
 @keyframes toast {
-  0%{
-    transform: translateY(80px)
+  0% {
+    transform: translateX(80px)
   }
-  50%{
-    transform: translateY(-20px)
+
+  50% {
+    transform: translateX(-30px)
   }
-  100%{
-    transform: translateY(0px)
+
+  100% {
+    transform: translateX(0px)
   }
 }
-/* body {
-  align-items: center;
-  height: 100vh;
-  background-color: var(--color-grey-4);
-}
-
-
-
-.title-1 {
-  font-size: var(--size-title-1);
-  font-weight: var(--weight-1);
-}
-
-.title-2 {
-  font-size: var(--size-title-2);
-  font-weight: var(--weight-0);
-}
-
-.text-1 {
-  font-size: var(--size-text-1);
-  font-weight: var(--weight-3);
-}
-
-.text-2 {
-  font-size: var(--size-text-1);
-  font-weight: var(--weight-2);
-}
-
-.text-3 {
-  font-size: var(--size-text-2);
-  font-weight: var(--weight-2);
-}
-
-.text-4 {
-  font-size: var(--size-text-3);
-  font-weight: var(--weight-2);
-}
-
-.text-5 {
-  font-size: var(--size-text-3);
-  font-weight: var(--weight-3);
-  line-height: 150%;
-}
-
-} */

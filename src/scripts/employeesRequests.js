@@ -1,5 +1,5 @@
 /* ================= FUNCIONÁRIOS (USERS) ================== */
-
+const urlBase = 'http://localhost:6278'
 import { createToast } from "./toastfy.js";
 
 
@@ -7,7 +7,7 @@ import { createToast } from "./toastfy.js";
 export const getUserInformation = async(token) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/users/profile',
+        url: `${urlBase}/users/profile`,
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -15,16 +15,10 @@ export const getUserInformation = async(token) => {
 
     try {
         const request = await axios.request(options)
-        // console.log(request.data)
         return request.data
     } catch (error) {
         console.error(error)
     }
-    /* axios.request(options).then(function (response) {
-        console.log(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    }); */
 }
 
 
@@ -32,14 +26,13 @@ export const getUserInformation = async(token) => {
 export const listUsersSameDepartment = (token) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/users/departments/coworkers',
+        url: `${urlBase}/users/departments/coworkers`,
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
 
     const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -52,14 +45,13 @@ export const listUsersSameDepartment = (token) => {
 export const listCompanyDepartments = (token) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/users/departments',
+        url: `${urlBase}/users/departments`,
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
 
     const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -72,34 +64,40 @@ export const listCompanyDepartments = (token) => {
 export const updateUserInfo = async(body, token) => {
     const options = {
         method: 'PATCH',
-        url: 'http://localhost:6278/users',
+        url: `${urlBase}/users`,
         headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        // data: { username: 'Kenzinho M2', password: '123456', email: 'kenzinhoM2@mail.com' }
         data: body
     };
 
     try {
-        const request = await axios.request(options)
-        console.log(request)
+        const response = await axios.request(options)
+
+        if (response.statusText == 'OK') {
+            const message = 'Informação atualizada com sucesso!'
+            sendToast(message, true)
+        }
         return true
 
     } catch (error) {
         const response = error.response.data.error
-        let message
-        console.error(response)
         if (response == 'body empty') {
-            message = 'Digite a informação a ser alterada!'
-            createToast(message, false)
+            const message = 'Digite a informação a ser atualizada!'
+            sendToast(message, false)
         }
     }
-   /*  axios.request(options).then(function (response) {
-        console.log(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    }); */
+}
+
+export const sendToast = (message, status) =>{
+        const toast = document.querySelector('.toast')
+    if(toast == null){
+        createToast(message, status)
+        const toast = document.querySelector('.toast')
+        setTimeout(() => {
+            toast.remove()
+        }, 4000);
+    }
 }
 
 
@@ -107,15 +105,15 @@ export const updateUserInfo = async(body, token) => {
 export const checkUserType = async(token) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/auth/validate_user',
+        url: `${urlBase}/auth/validate_user`,
         headers: {
             Authorization: `Bearer ${token}` 
         }
     };
     try {
         const request = await axios.request(options)
-        // console.log(request.data.is_admin)
         return request.data.is_admin
+
     } catch (error) {
         console.log(error)
     }

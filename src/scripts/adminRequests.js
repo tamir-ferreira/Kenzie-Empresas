@@ -1,18 +1,19 @@
-/* ================= ADMINISTRADOR ================== */
+import { sendToast } from "./employeesRequests.js";
 
+/* ================= ADMINISTRADOR ================== */
+const urlBase = 'http://localhost:6278'
 
 /* ----------------- LISTAR TODOS OS USUÁRIOS ---------------- */
 export const listAllUsers = (token) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/users',
+        url: `${urlBase}/users`,
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
 
     const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -25,14 +26,13 @@ export const listAllUsers = (token) => {
 export const listWithoutDepartment = (token) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/admin/out_of_work',
+        url: `${urlBase}/admin/out_of_work`,
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
 
     const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -42,68 +42,55 @@ export const listWithoutDepartment = (token) => {
 
 
 /* ----------------- ATUALIZAR INFORMAÇÕES DO FUNCIONÁRIO ---------------- */
-export const updateUserInfoByAdmin = (token, id, body) => {
+export const updateUserInfoByAdmin = async (token, id, body) => {
     const options = {
         method: 'PATCH',
-        url: `http://localhost:6278/admin/update_user/${id}`,
+        url: `${urlBase}/admin/update_user/${id}`,
         headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
         data: body
     };
 
-    const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
+    const request = await axios.request(options).then(function (response) {
         return response
     }).catch(function (error) {
+        if (error.response.statusText == 'Bad Request') {
+            const message = 'Selecione a informação a ser atualizada'
+            sendToast(message, false)
+        }
         console.error(error);
     });
+
+    if (request.statusText == 'OK') {
+        const message = 'Informação atualizada com sucesso!'
+        sendToast(message, true)
+    }
     return request
 }
 
 
 /* ----------------- DELETAR FUNCIONÁRIO ---------------- */
-export const deleteUser = (token, id) => {
+export const deleteUser = async (token, id) => {
     const options = {
         method: 'DELETE',
-        url: `http://localhost:6278/admin/delete_user/${id}`,
+        url: `${urlBase}/admin/delete_user/${id}`,
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
 
-    const request = axios.request(options).then(function (response) {
+    const request = await axios.request(options).then(function (response) {
         return response
     }).catch(function (error) {
         console.error(error);
     });
+
+    if (request.statusText == 'No Content') {
+        const message = 'Usuário deletado com sucesso!'
+        sendToast(message, true)
+    }
     return request
-}
-
-
-/* ----------------- CADASTRAR EMPRESA ------------------- */
-const registerCompany = () => {
-    const options = {
-        method: 'POST',
-        url: 'http://localhost:6278/companies',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMjczOTBhZGYtMzhhNy00Y2VlLTg5ZWQtYzJiYWVmMzY4YmZmIiwiaXNfYWRtaW4iOnRydWUsImlhdCI6MTY2NjkxNzQyMywiZXhwIjoxNjY3NzgxNDIzLCJzdWIiOiJbb2JqZWN0IFVuZGVmaW5lZF0ifQ.1VEwu65jMWZXistVAMZrjTjkJ1KzsADjj08j-VPDlOA'
-        },
-        data: {
-            name: 'Kenzie',
-            opening_hours: '09:00',
-            description: 'Kenzie kenzie kenzie',
-            sector_uuid: '3854e74a-0a96-43dd-b44b-f884c08ff3a1'
-        }
-    };
-
-    axios.request(options).then(function (response) {
-        console.log(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    });
 }
 
 
@@ -113,14 +100,13 @@ const registerCompany = () => {
 export const listAllDepartments = (token) => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/departments',
+        url: `${urlBase}/departments`,
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
 
     const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -130,18 +116,15 @@ export const listAllDepartments = (token) => {
 
 
 /* ----------------- LISTAR TODOS OS DEPARTAMENTOS DE UM EMPRESA  ESPECÍFICA -------------------*/
-
-/* VERIFICAR SE PRECISA OU NÃO USAR */
 export const listAllDepartmentsByCompany = (token, companyID) => {
     const options = {
         method: 'GET',
-        url: `http://localhost:6278/departments/${companyID}`,
+        url: `${urlBase}/departments/${companyID}`,
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
     const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
         return response.data
     }).catch(function (error) {
         console.error(error);
@@ -151,110 +134,123 @@ export const listAllDepartmentsByCompany = (token, companyID) => {
 
 
 /* ----------------- CRIAR DEPARTAMENTO -------------------*/
-export const createDepartment = (token, body) => {
+export const createDepartment = async (token, body) => {
     const options = {
         method: 'POST',
-        url: 'http://localhost:6278/departments',
+        url: `${urlBase}/departments`,
         headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
         data: body
     };
 
-    const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
+    const request = await axios.request(options).then(function (response) {
         return response
     }).catch(function (error) {
         console.error(error);
     });
+    console.log(request)
+    if (request.statusText == 'Created') {
+        const message = 'Departamento criado com sucesso!'
+        sendToast(message, true)
+    }
     return request
 }
 
 
 /* ----------------- CONTRATAR FUNCIONÁRIO -------------------*/
-export const hireEmployee = (token, body) => {
+export const hireEmployee = async (token, body) => {
     const options = {
         method: 'PATCH',
-        url: 'http://localhost:6278/departments/hire/',
+        url: `${urlBase}/departments/hire/`,
         headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        /* data: {
-            user_uuid: '18c1e797-420e-414c-a521-a78c71e4d4d5',
-            department_uuid: 'e66f05d9-6093-4e32-9f70-4bcc213e53a5'
-        } */
         data: body
     };
 
-    const request = axios.request(options).then(function (response) {
-        console.log(response.data);
+    const request = await axios.request(options).then(function (response) {
         return response
     }).catch(function (error) {
         console.error(error);
     });
+
+    if (request.statusText == 'OK') {
+        const message = 'Funcionário contratado com sucesso!'
+        sendToast(message, true)
+    }
     return request
 }
 
 
 /* ----------------- DEMITIR FUNCIONÁRIO -------------------*/
-export const dismissEmployee = (token, id) => {
+export const dismissEmployee = async (token, id) => {
     const options = {
         method: 'PATCH',
-        url: `http://localhost:6278/departments/dismiss/${id}`,
+        url: `${urlBase}/departments/dismiss/${id}`,
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
 
-    const request = axios.request(options).then(function (response) {
-        console.log(response.data);
+    const request = await axios.request(options).then(function (response) {
         return response
     }).catch(function (error) {
         console.error(error);
     });
+
+    if (request.statusText == 'OK') {
+        const message = 'Funcionário desligado com sucesso!'
+        sendToast(message, true)
+    }
     return request
 }
 
 
 /* ----------------- EDITAR DEPARTAMENTO -------------------*/
-export const editDepartment = (token, id, body) => {
+export const editDepartment = async (token, id, body) => {
     const options = {
         method: 'PATCH',
-        url: `http://localhost:6278/departments/${id}`,
+        url: `${urlBase}/departments/${id}`,
         headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
         data: body
     };
 
-    const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
+    const request = await axios.request(options).then(function (response) {
         return response
     }).catch(function (error) {
         console.error(error);
     });
+
+    if (request.statusText == 'OK') {
+        const message = 'Informação atualizada com sucesso!'
+        sendToast(message, true)
+    }
     return request
 }
 
 
 /* ----------------- DELETAR DEPARTAMENTO -------------------*/
-export const deleteDepartment = (token, id) => {
+export const deleteDepartment = async (token, id) => {
     const options = {
         method: 'DELETE',
-        url: `http://localhost:6278/departments/${id}`,
+        url: `${urlBase}/departments/${id}`,
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
 
-    const request = axios.request(options).then(function (response) {
-        // console.log(response.data);
+    const request = await axios.request(options).then(function (response) {
         return response
     }).catch(function (error) {
         console.error(error);
     });
+
+    if (request.statusText == 'No Content') {
+        const message = 'Departamento deletado com sucesso!'
+        sendToast(message, true)
+    }
     return request
 }

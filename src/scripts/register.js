@@ -1,6 +1,9 @@
+
+import { toggleMenu } from "./menuMobile.js"
 import { createUser } from "./tokenlessRequests.js"
 // import axios from "axios";
 
+toggleMenu()
 
 const eventRegister = () => {
     const form = document.querySelector('form')

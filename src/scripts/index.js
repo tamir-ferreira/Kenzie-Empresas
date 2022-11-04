@@ -1,5 +1,9 @@
+import { toggleMenu } from "./menuMobile.js"
 import { getAllCompanys, getAllSectors, getCompanysBySector } from "./tokenlessRequests.js"
 
+
+
+toggleMenu()
 
 const renderSelect = async () => {
     const select = document.querySelector('#sectors')

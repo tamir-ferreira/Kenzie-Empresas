@@ -1,4 +1,5 @@
 /* ================= ROTAS QUE NÃO UTILIZAM TOKEN ================== */
+const urlBase = 'http://localhost:6278'
 import { createToast } from "./toastfy.js";
 
 
@@ -6,14 +7,13 @@ import { createToast } from "./toastfy.js";
 export const createUser = async (body) => {
     const options = {
         method: 'POST',
-        url: 'http://localhost:6278/auth/register',
+        url: `${urlBase}/auth/register`,
         headers: { 'Content-Type': 'application/json' },
         data: body
     };
 
     try {
         const request = await axios.request(options)
-        // console.log(request);
         if (request.statusText = 'Created') {
             let message = 'Cadastrado com sucesso! Redirecionando para o Login...'
             createToast(message, true)
@@ -26,14 +26,14 @@ export const createUser = async (body) => {
             if (error == 'insert a valid email!') {
                 message = 'Email inválido. Verifique e tente novamente!'
             }
+
             if (error == 'email alread exists!') {
                 message = `Email já cadastrado.
                  Tente novamente ou <a href='./login.html'>faça Login</a>`
-                console.log('erro email duplicado')
             }
             createToast(message, false)
         });
-        
+
         return false
     }
 }
@@ -43,7 +43,7 @@ export const createUser = async (body) => {
 export const login = async (body) => {
     const options = {
         method: 'POST',
-        url: 'http://localhost:6278/auth/login',
+        url: `${urlBase}/auth/login`,
         headers: { 'Content-Type': 'application/json' },
         data: body
     };
@@ -58,18 +58,17 @@ export const login = async (body) => {
         }
 
     } catch (error) {
-        console.log(error)
         const response = error.response.data.error
-        // .forEach(error => {
         let message
+
         if (response == 'email invalid!') {
             message = 'Email inválido. Verifique e tente novamente!'
             createToast(message, false)
             return 'email'
         }
+
         if (response == 'password invalid!') {
             message = 'Senha não confere. Tente novamente!'
-            // console.log('erro email duplicado')
             createToast(message, false)
             return 'senha'
         }
@@ -78,65 +77,51 @@ export const login = async (body) => {
 
 
 /* ----------------- LISTAR TODAS AS EMPRESAS ---------------- */
-export const getAllCompanys = async() => {
+export const getAllCompanys = async () => {
     const options = {
         method: 'GET',
-        url: 'http://localhost:6278/companies'
+        url: `${urlBase}/companies`
     };
 
     try {
         const request = await axios.request(options)
         return request.data
+
     } catch (error) {
         console.error(error)
     }
-    /* const request = axios.request(options).then(function (response) {
-        console.log(response.data)
-        return response.data
-    }).catch(function (error) {
-        console.error(error);
-    }); */
-    return request
 }
 
 
 /* ----------------- LISTAR EMPRESAS POR SETOR ---------------- */
-export const getCompanysBySector = async(sector) => {
+export const getCompanysBySector = async (sector) => {
     const options = {
         method: 'GET',
-        url: `http://localhost:6278/companies/${sector} `
+        url: `${urlBase}/companies/${sector}`
     };
 
     try {
         const request = await axios.request(options)
-        // console.log(request)
         return request.data
+
     } catch (error) {
         console.error(error)
     }
-   /*  axios.request(options).then(function (response) {
-        console.log(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    }); */
 }
 
 
 /* ----------------- LISTAR TODOS OS SETORES ---------------- */
-export const getAllSectors = async() => {
-    const options = { method: 'GET', url: 'http://localhost:6278/sectors' };
+export const getAllSectors = async () => {
+    const options = {
+        method: 'GET',
+        url: `${urlBase}/sectors`
+    };
 
     try {
         const request = await axios.request(options)
         return request.data
-        
+
     } catch (error) {
         console.error(error)
     }
-    /* axios.request(options).then(function (response) {
-        console.log(response.data);
-        return response.data
-    }).catch(function (error) {
-        console.error(error);
-    }); */
 }

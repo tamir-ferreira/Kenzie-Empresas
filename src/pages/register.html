@@ -10,27 +10,34 @@
     <link rel="stylesheet" href="../../src/styles/globalStyles.css">
     <link rel="stylesheet" href="../../src/styles/buttons.css">
     <link rel="stylesheet" href="../../src/styles/login-register.css">
-    <script defer type="module" src='../../src/scripts/register.js'></script>
+    <link rel="stylesheet" href="../../src/styles/globalMobile.css">
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer type="module" src='../../src/scripts/register.js'></script>
     <title>Kenzie Empresas - Cadastro</title>
 </head>
 
 <body>
     <header>
         <div class="container">
-            <img src="../../src/images/logo.svg" alt="logotipo kenzie empresas">
-            <nav>
-                <a href="./login.html">
+            <img src="../images/logo.svg" alt="logotipo kenzie empresas">
+            <nav class="">
+                <a href="../../src/pages/login.html">
                     <button class="btn-outline">Login</button>
                 </a>
-                <a href="./register.html">
+                <a href="../../src/pages/register.html">
                     <button class="btn-brand">Cadastro</button>
                 </a>
             </nav>
         </div>
+        <button class="show-menu" id="open-menu">
+            <img src="../images/open.svg" alt="botão de abrir menu">
+        </button>
+        <button class="" id="close-menu">
+            <img src="../images/close.svg" alt="botão de fechar menu">
+        </button>
     </header>
-    <main>
-        <section>
+    <main class="main-mobile">
+        <section class="section-mobile">
             <form>
                 <h3>Cadastre-se</h3>
                 <input name="username" type="text" placeholder="Seu nome" required>

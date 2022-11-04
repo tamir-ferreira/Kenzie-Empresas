@@ -9,15 +9,10 @@ body{
 main {
     background-image: url('../images/background.png');
     background-size:cover;
-    /* object-fit:fill; */
     height: 95%;
-    /* height: 90vh ; */
-    /* height:90vh; */
     display: flex;
     justify-content: center;
-    /* flex-direction: column; */
     align-items: center;
-    /* border: 1px solid red; */
 }
 
 section {

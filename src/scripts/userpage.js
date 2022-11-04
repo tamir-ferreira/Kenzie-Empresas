@@ -16,6 +16,7 @@ const editProfile = () => {
     const token = localStorage.getItem('@kenzieEmpresas-userId')
     const form = document.querySelector('form')
 
+    
     form.onsubmit = async (event) => {
         event.preventDefault()
         const [...formElements] = event.target
@@ -24,6 +25,7 @@ const editProfile = () => {
         formElements.forEach(element => {
             if (element.tagName == "INPUT" && element.value != '') {
                 body[element.name] = element.value
+                element.value = ''
             }
         })
 
@@ -34,14 +36,16 @@ const editProfile = () => {
 }
 
 const reloadUser = async () => {
-    renderUserInfo()
+    const profile = await getUserInformation(token)
+    renderUserInfo(profile)
+    // renderUserInfo()
     document.querySelector('.modal-container').classList.toggle('hide-modal')
 }
 
 const renderUserInfo = async (profile) => {
     const userInfo = document.querySelector('.user-info >div')
-    
-    const { username, email, professional_level, kind_of_work } = profile
+
+    const { username, email, professional_level, kind_of_work } = await profile
     userInfo.innerHTML = ''
 
     userInfo.insertAdjacentHTML('afterbegin',
@@ -65,23 +69,23 @@ const renderUserInfo = async (profile) => {
         btnClose.onclick = () => {
             modal.classList.toggle('hide-modal')
         }
-        editProfile(profile)
+        editProfile()
     }
 
-    if(profile.department_uuid != null){
+    if (profile.department_uuid != null) {
         const emptContainer = document.querySelector('.empty-container')
         emptContainer.style.display = 'none'
         renderCoWorkers(profile)
-    }   
-    
+    }
+
     logout()
 }
 
 
-const renderCoWorkers = async(profile) =>{
+const renderCoWorkers = async (profile) => {
     const company = await listCompanyDepartments(token)
     const coworkers = await listUsersSameDepartment(token)
-    const {name} = company
+    const { name } = company
     let departmentName = ''
 
     company.departments.forEach(department => {
@@ -99,14 +103,14 @@ const renderCoWorkers = async(profile) =>{
     listUsers.appendChild(h2)
 
     coworkers[0].users.forEach(cowork => {
-        if (profile.uuid != cowork.uuid ) {
+        if (profile.uuid != cowork.uuid) {
             const li = document.createElement('li')
             const h4 = document.createElement('h4')
             const span = document.createElement('span')
-            
+
             h4.innerText = cowork.username
             span.innerText = cowork.professional_level
-            
+
             listUsers.appendChild(ul)
             ul.appendChild(li)
             li.append(h4, span)
@@ -116,17 +120,17 @@ const renderCoWorkers = async(profile) =>{
 
 
 /* --------------- VERIFICA SE O USUÁRIO ESTÁ LOGADO -------------- */
-const verifyPermission = async() => {
+const verifyPermission = async () => {
     if (token == '' || token == null) {
         window.location.replace('../../index.html')
     } else {
         const isAdmin = await checkUserType(token)
         if (isAdmin) {
             window.location.replace('./adminPage.html')
-        } else{
+        } else {
             if (isAdmin == undefined) {
-                window.location.replace('../../index.html') 
-            } else{
+                window.location.replace('../../index.html')
+            } else {
                 const profile = await getUserInformation(token)
                 renderUserInfo(profile)
             }

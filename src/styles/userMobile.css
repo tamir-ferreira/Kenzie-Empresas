@@ -1,0 +1,74 @@
+@media only screen and (max-width: 600px) {
+    body {
+        /* background-color: lightblue; */
+        width: 100vw;
+        height: 100%;
+        /* border: 1px solid green; */
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    .user-info {
+        padding: 20px;
+        /* flex-direction: column; */
+        /* border: 1px solid red; */
+        /* justify-content: flex-start; */
+        align-items: flex-end;
+
+    }
+
+    .user-info div {
+        /* flex-direction: column; */
+        /* border: 1px solid green; */
+        width: 100%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    nav>button {
+        width: auto;
+        padding: 0 20px;
+    }
+
+    .empty-container {
+        /* align-items: center; */
+        font-size: var(--size-title-5);
+        text-align: center;
+        width: 100%;
+        padding: 20px;
+        height: 300px;
+    }
+
+    .empty-container>h2 {
+        /* align-items: center; */
+        font-size: var(--size-title-5);
+    }
+
+
+    .list-users h2 {
+        font-size: var(--size-text-1);
+    }
+
+    .list-users>ul {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        /* background-color: red; */
+        overflow-x: auto;
+        padding: 40px 20px;
+    }
+
+    .list-users>ul>li>h4 {
+        width: 100px;
+        /* height: 100px; */
+    }
+
+    .toast {
+        top:unset;
+        bottom: 20px;
+    }
+}
