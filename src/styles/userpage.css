@@ -27,33 +27,29 @@
     font-size: var(--size-text-1);
 }
 
-.user-info > button{
-    width:fit-content;
+.user-info>button {
+    width: fit-content;
     height: fit-content;
     border: none;
     background: none;
 }
 
-
 .list-users {
     display: flex;
     flex-direction: column;
-    /* gap: 58px; */
     background-color: var(--color-grey-1);
-    /* display: none; */
 }
 
-.empty{
+.empty-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 467px;
     background-color: var(--color-grey-1);
     border: 1px solid var(--border-2);
-    /* display: none; */
 }
 
-.empty>h2{
+.empty-container>h2 {
     font-size: var(--size-title-1);
 }
 
@@ -67,15 +63,15 @@
     font-size: var(--size-title-3);
 }
 
-.list-users>ul{
+.list-users>ul {
     display: flex;
     flex-wrap: wrap;
     gap: 13px;
-    padding: 58px;
+    padding: 59px;
     justify-content: space-between;
 }
 
-.list-users>ul>li{
+.list-users>ul>li {
     display: flex;
     flex-direction: column;
     width: 318px;

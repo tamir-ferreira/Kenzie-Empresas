@@ -1,23 +1,20 @@
-// import { logout } from "./adminPage.js"
-import { getUserInformation, updateUserInfo } from "./employeesRequests.js"
+import { checkUserType, getUserInformation, listCompanyDepartments, listUsersSameDepartment, updateUserInfo } from "./employeesRequests.js"
+const token = localStorage.getItem('@kenzieEmpresas-userId')
 
 
 export const logout = () => {
     const btnLogout = document.querySelector('#btn-logout')
-    btnLogout.onclick = () => {
+    btnLogout.onclick = (event) => {
+        event.preventDefault()
         localStorage.removeItem('@kenzieEmpresas-userId')
-        window.location.replace('./login.html')
+        window.location.replace('../../index.html')
     }
 }
 
 
-const editProfile = (profile) => {
+const editProfile = () => {
     const token = localStorage.getItem('@kenzieEmpresas-userId')
-    // const {username, email} = profile
     const form = document.querySelector('form')
-    // console.log(profile)
-    // form[0].value = username
-    // form[1].value = email
 
     form.onsubmit = async (event) => {
         event.preventDefault()
@@ -25,35 +22,25 @@ const editProfile = (profile) => {
         const body = {}
 
         formElements.forEach(element => {
-            // console.log(element)
             if (element.tagName == "INPUT" && element.value != '') {
                 body[element.name] = element.value
             }
         })
-        console.log(body)
 
         const response = await updateUserInfo(body, token)
-        console.log(response)
 
-        if (response) {
-            // document.location.reload(true)
-            reloadUser()
-            // renderUserInfo()
-        }
+        if (response) reloadUser()
     }
 }
 
 const reloadUser = async () => {
-    // console.log('reload')
     renderUserInfo()
     document.querySelector('.modal-container').classList.toggle('hide-modal')
 }
 
-const renderUserInfo = async () => {
+const renderUserInfo = async (profile) => {
     const userInfo = document.querySelector('.user-info >div')
-    const token = localStorage.getItem('@kenzieEmpresas-userId')
-    const profile = await getUserInformation(token)
-    // console.log(userData)
+    
     const { username, email, professional_level, kind_of_work } = profile
     userInfo.innerHTML = ''
 
@@ -80,6 +67,70 @@ const renderUserInfo = async () => {
         }
         editProfile(profile)
     }
+
+    if(profile.department_uuid != null){
+        const emptContainer = document.querySelector('.empty-container')
+        emptContainer.style.display = 'none'
+        renderCoWorkers(profile)
+    }   
+    
     logout()
 }
-renderUserInfo()
+
+
+const renderCoWorkers = async(profile) =>{
+    const company = await listCompanyDepartments(token)
+    const coworkers = await listUsersSameDepartment(token)
+    const {name} = company
+    let departmentName = ''
+
+    company.departments.forEach(department => {
+        if (profile.department_uuid == department.uuid) {
+            departmentName = department.name
+        }
+    })
+
+    const listUsers = document.querySelector('.list-users')
+    listUsers.innerText = ''
+    const h2 = document.createElement('h2')
+    const ul = document.createElement('ul')
+    h2.innerText = `${name} - ${departmentName}`
+
+    listUsers.appendChild(h2)
+
+    coworkers[0].users.forEach(cowork => {
+        if (profile.uuid != cowork.uuid ) {
+            const li = document.createElement('li')
+            const h4 = document.createElement('h4')
+            const span = document.createElement('span')
+            
+            h4.innerText = cowork.username
+            span.innerText = cowork.professional_level
+            
+            listUsers.appendChild(ul)
+            ul.appendChild(li)
+            li.append(h4, span)
+        }
+    });
+}
+
+
+/* --------------- VERIFICA SE O USUÁRIO ESTÁ LOGADO -------------- */
+const verifyPermission = async() => {
+    if (token == '' || token == null) {
+        window.location.replace('../../index.html')
+    } else {
+        const isAdmin = await checkUserType(token)
+        if (isAdmin) {
+            window.location.replace('./adminPage.html')
+        } else{
+            if (isAdmin == undefined) {
+                window.location.replace('../../index.html') 
+            } else{
+                const profile = await getUserInformation(token)
+                renderUserInfo(profile)
+            }
+        }
+    }
+}
+verifyPermission()
