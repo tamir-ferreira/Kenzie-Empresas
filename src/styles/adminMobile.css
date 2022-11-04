@@ -1,0 +1,88 @@
+@media only screen and (max-width: 37.5rem) {
+    body {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    header {
+        padding: 1.25rem;
+    }
+
+    nav>button {
+        width: auto;
+        padding: 0 .625rem;
+    }
+
+    .modal-container>div>h2 {
+        font-size: var(--size-title-5);
+    }
+
+    select {
+        text-align: center;
+    }
+
+    .departments>div {
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 0;
+        margin: 1.875rem 0;
+        width: 100%;
+    }
+
+    .list-departments,
+    .list-employees {
+        width: 100%;
+        flex-wrap: nowrap;
+        padding: 1.875rem;
+        height: auto;
+    }
+
+    .list-departments>li {
+        height: auto;
+        padding: .9375rem;
+    }
+
+    .list-departments>li>h4 {
+        width: 21.875rem;
+    }
+
+    .list-employees>li {
+        height: auto;
+        margin: 0;
+        padding: 1.25rem;
+    }
+
+    .list-employees>li>h4 {
+        width: 12.5rem;
+    }
+
+    .modal-container>div {
+        width: 100%;
+        padding: 1.25rem;
+    }
+
+    div.modal-departments>div {
+        margin-bottom: .625rem;
+    }
+
+    div.modal-departments>div>form>Select {
+        width: 11.5625rem;
+        margin-left: .9375rem;
+        padding-left: .3125rem;
+        text-align: center;
+    }
+
+    div.modal-confirmation {
+        width: 100%;
+        padding: 4.375rem 1.875rem;
+    }
+
+    div.modal-departments>ul>li>div {
+        width: auto;
+    }
+
+    .toast {
+        top: unset;
+        bottom: 1.25rem;
+    }
+}

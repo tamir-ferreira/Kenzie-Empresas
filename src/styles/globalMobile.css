@@ -1,0 +1,115 @@
+@media only screen and (max-width: 37.5rem) {
+    body {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    header {
+        height: auto;
+        z-index: 1;
+        background-color: var(--color-white);
+        position: relative;
+    }
+
+    nav {
+        display: none;
+        padding-top: 2.75rem;
+        width: 100vw;
+        justify-content: space-between;
+    }
+
+    #close-menu,
+    #open-menu {
+        display: none;
+        border: none;
+        background: none;
+        width: auto;
+        height: fit-content;
+        position: absolute;
+        right: .875rem;
+        top: 1.5625rem;
+    }
+
+    nav.show-menu,
+    #close-menu.show-menu,
+    #open-menu.show-menu {
+        display: flex;
+    }
+
+    nav>a,
+    nav>a>button {
+        width: 100%;
+    }
+
+    header>div {
+        height: fit-content;
+        width: 100vw;
+        flex-wrap: wrap;
+        padding: 1.5625rem .875rem;
+        position: relative;
+    }
+
+    main.main-mobile {
+        margin: 0rem;
+        padding: 0rem;
+        height: 100vh;
+        background-size: cover;
+        align-items: flex-start;
+    }
+
+    main.main-index {
+        padding-top: 1.4375rem;
+    }
+
+    main.show-menu {
+        transform: translateY(-5.75rem);
+    }
+
+    main>img {
+        display: none;
+    }
+
+    section.section-mobile {
+        width: 100%;
+        margin-top: 1.75rem;
+        padding: 2.5rem 1.1875rem;
+    }
+
+    form>h3 {
+        font-size: var(--size-title-3);
+    }
+
+    section>ul {
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        overflow-y: hidden;
+    }
+
+    section>div {
+        background-position-x: 95%;
+    }
+
+    section>div>select {
+        width: 100vw;
+    }
+
+    ul>li {
+        width: 15.0625rem;
+        padding-left: .9375rem;
+    }
+
+    li>h4 {
+        width: 15.0625rem;
+        padding-bottom: 4.625rem;
+    }
+
+    li>span {
+        margin-bottom: .9375rem;
+    }
+
+    .toast {
+        top: unset;
+        bottom: 1.25rem;
+    }
+}

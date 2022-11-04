@@ -1,0 +1,82 @@
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: .0625rem solid var(--border-3);
+    margin: 1.5rem 0 3.3125rem 0;
+    padding: 1.25rem 1.9375rem;
+}
+
+.user-info>div {
+    display: flex;
+    align-items: flex-end;
+    gap: 9.375rem;
+}
+
+.user-info>div>div {
+    display: flex;
+    flex-direction: column;
+    gap: .6875rem;
+}
+
+.user-info>div>div>h1 {
+    font-size: var(--size-title-4);
+}
+
+.user-info>div span {
+    font-size: var(--size-text-1);
+}
+
+.user-info>button {
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background: none;
+}
+
+.list-users {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-grey-1);
+}
+
+.empty-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 29.1875rem;
+    background-color: var(--color-grey-1);
+    border: .0625rem solid var(--border-2);
+}
+
+.empty-container>h2 {
+    font-size: var(--size-title-1);
+}
+
+.list-users>h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-brand);
+    color: var(--color-white);
+    height: 4.875rem;
+    font-size: var(--size-title-3);
+}
+
+.list-users>ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8125rem;
+    padding: 3.6875rem;
+    justify-content: space-between;
+}
+
+.list-users>ul>li {
+    display: flex;
+    flex-direction: column;
+    width: 19.875rem;
+    padding: .8125rem 1.4375rem;
+    gap: .875rem;
+    border: .0625rem solid var(--color-brand);
+    background-color: var(--color-white);
+}

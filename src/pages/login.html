@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../src/styles/globalStyles.css">
+    <link rel="stylesheet" href="../../src/styles/buttons.css">
+    <link rel="stylesheet" href="../../src/styles/login-register.css">
+    <link rel="stylesheet" href="../../src/styles/globalMobile.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer type="module" src='../../src/scripts/login.js'></script>
+    <title>Kenzie Empresas - Login</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img src="../images/logo.svg" alt="logotipo kenzie empresas">
+            <nav class="">
+                <a href="../../src/pages/login.html">
+                    <button class="btn-outline">Login</button>
+                </a>
+                <a href="../../src/pages/register.html">
+                    <button class="btn-brand">Cadastro</button>
+                </a>
+            </nav>
+        </div>
+        <button class="show-menu" id="open-menu">
+            <img src="../images/open.svg" alt="botão de abrir menu">
+        </button>
+        <button class="" id="close-menu">
+            <img src="../images/close.svg" alt="botão de fechar menu">
+        </button>
+    </header>
+    <main class="main-mobile">
+        <section class="section-mobile">
+            <form>
+                <h3>Login</h3>
+                <p>Preencha os campos para realizar login</p>
+                <input name="email" type="email" placeholder="Seu e-mail" required>
+                <input name="password" type="password" placeholder="Sua senha" required>
+                <button class="btn-brand">Login</button>
+                <span>ou</span>
+            </form>
+            <a href="../pages/register.html">
+                <button class="btn-outline">Cadastre-se</button>
+            </a>
+        </section>
+    </main>
+</body>
+
+</html>

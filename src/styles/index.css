@@ -1,0 +1,69 @@
+main {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2.6875rem;
+}
+
+section {
+    width: 34.375rem;
+    height: 46.4375rem;
+    background-color: var(--color-grey-1);
+    box-shadow: 0rem 0rem 2.1875rem var(--border-1);
+}
+
+section>div {
+    height: 3.25rem;
+    overflow: hidden;
+    background: url('../images/arrowBottom.svg') no-repeat center var(--color-brand);
+    background-position-x: 31.5625rem;
+}
+
+section>div>select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    padding: .3125rem;
+    line-height: 1;
+    color: var(--color-white);
+    font-family: var(--family-2);
+    font-weight: var(--weight-2);
+    font-size: var(--size-text-2);
+}
+
+section>div>select>option {
+    font-family: var(--family-2);
+}
+
+section>ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.375rem;
+    padding: 1.5625rem 1.875rem;
+    height: 43.1875rem;
+    background-color: var(--color-grey-1);
+    overflow-y: scroll;
+}
+
+ul>li {
+    display: flex;
+    flex-direction: column;
+    gap: .8125rem;
+    padding: .8125rem 1.5625rem;
+    background-color: var(--color-white);
+    border-bottom: .0625rem solid var(--color-brand);
+}
+
+li h4 {
+    font-size: var(--size-text-2);
+}
+
+li span {
+    width: fit-content;
+    padding: .375rem 1.625rem;
+    border: .0625rem solid var(--color-brand);
+    border-radius: var(--radius-2);
+}

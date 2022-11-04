@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/globalStyles.css">
+    <link rel="stylesheet" href="../styles/buttons.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+    <link rel="stylesheet" href="../styles/userPage.css">
+    <link rel="stylesheet" href="../styles/userMobile.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" defer src='../scripts/userPage.js'></script>
+    <title>Kenzie Empresas - Usuário</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img src="../images/logo.svg" alt="logotipo kenzie empresas">
+            <nav>
+                <button id="btn-logout" class="btn-outline">Logout</button>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="user-info">
+            <div>
+                <!-- RENDERIZADO PELO JS -->
+            </div>
+            <button id="btn-edit">
+                <img src="../images/edit-brand.svg" alt="ícone de um lápis">
+            </button>
+        </section>
+        <section class="list-users ">
+            <!-- RENDERIZADO PELO JS -->
+        </section>
+        <div class="empty-container">
+            <h2>Você ainda não foi contratado</h2>
+        </div>
+    </main>
+    <div class="modal-container hide-modal">
+        <div>
+            <button id="btn-close">
+                <img src="../images/close.svg" alt="botão fechar janela de modal">
+            </button>
+            <h2>Editar Perfil</h2>
+            <form action="">
+                <input name="username" type="text" placeholder="Seu nome">
+                <input name="email" type="email" placeholder="Seu e-mail">
+                <input name="password" type="password" placeholder="Sua senha">
+                <button class="btn-brand">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

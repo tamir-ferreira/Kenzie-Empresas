@@ -1,0 +1,134 @@
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-modal);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+}
+
+.hide-modal {
+    display: none;
+}
+
+.modal-container>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: .875rem;
+    width: 31.625rem;
+    padding: 2.5rem 2.5rem 3.5625rem 2.5rem;
+    background-color: var(--color-white);
+    position: relative;
+}
+
+#btn-close {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background: none;
+    position: absolute;
+    top: .9375rem;
+    right: 1.25rem;
+}
+
+.modal-container>div>img:hover {
+    cursor: pointer;
+}
+
+.modal-container>div>h2 {
+    font-size: var(--size-title-2);
+    font-family: var(--family-2);
+}
+
+.modal-container>div>form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .8125rem;
+}
+
+.modal-container button {
+    width: 100%;
+    margin-top: .5rem;
+}
+
+div.modal-departments {
+    display: flex;
+    flex-direction: column;
+    width: 53.5625rem;
+}
+
+div.modal-departments>div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2.3125rem;
+}
+
+div.modal-departments>div>div {
+    display: flex;
+    flex-direction: column;
+    margin-top: .9375rem;
+    gap: .6875rem;
+}
+
+div.modal-departments>div>form {
+    display: flex;
+    flex-direction: column;
+    width: 26.375rem;
+}
+
+div.modal-departments>div>form>button {
+    align-self: flex-end;
+    width: fit-content;
+    width: 9.8125rem;
+}
+
+div.modal-departments>ul {
+    display: flex;
+    flex-direction: row;
+    height: 18.125rem;
+    width: 100%;
+    background-color: var(--color-grey-1);
+    padding: 2.6875rem 2.0625rem;
+    gap: 1.9375rem;
+    overflow-x: scroll;
+}
+
+div.modal-departments>ul>li {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    padding: 1.125rem 1.8125rem;
+    gap: 1.375rem;
+    border-bottom: .0625rem solid var(--color-brand);
+}
+
+div.modal-departments>ul>li>div {
+    display: flex;
+    flex-direction: column;
+    gap: .5625rem;
+    width: 19.125rem;
+}
+
+div.modal-departments>ul>li>button {
+    align-self: center;
+    width: 9.8125rem;
+}
+
+div.modal-confirmation {
+    display: flex;
+    flex-direction: column;
+    width: 45.8125rem;
+    padding: 4.375rem 9.8125rem 3.5rem 9.8125rem;
+}
+
+div.modal-confirmation h3 {
+    font-size: var(--size-title-5);
+    text-align: center;
+}

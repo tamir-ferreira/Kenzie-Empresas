@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/globalStyles.css">
+    <link rel="stylesheet" href="../styles/buttons.css">
+    <link rel="stylesheet" href="../styles/modal.css">
+    <link rel="stylesheet" href="../styles/adminPage.css">
+    <link rel="stylesheet" href="../styles/adminMobile.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer type="module" src='../scripts/adminPage.js'></script>
+    <title>Kenzie Empresas - Administrador</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img src="../images/logo.svg" alt="logotipo kenzie empresas">
+            <nav>
+                <button id="btn-logout" class="btn-outline">Logout</button>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="departments">
+            <div>
+                <h2>Departamentos</h2>
+                <div>
+                    <select name="" id="companies">
+                        <!-- RENDERIZADO PELO JS -->
+                    </select>
+                </div>
+                <button id="create-department" class="btn-brand">
+                    <img src="../images/plus.svg" alt="sinal de mais">
+                    <span>Criar</span>
+                </button>
+            </div>
+            <ul class="list-departments">
+                <!-- RENDERIZADO PELO JS -->
+            </ul>
+        </section>
+        <section>
+            <h2>Usuários cadastrados</h2>
+            <ul class="list-employees">
+                <!-- RENDERIZADO PELO JS -->
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>
