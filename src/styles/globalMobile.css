@@ -1,9 +1,7 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 37.5rem) {
     body {
-        /* background-color: lightblue; */
         width: 100vw;
         height: 100vh;
-        /* border: 1px solid green; */
     }
 
     header {
@@ -14,25 +12,22 @@
     }
 
     nav {
-        /* com menu inativo */
         display: none;
-        padding-top: 44px;
+        padding-top: 2.75rem;
         width: 100vw;
         justify-content: space-between;
-        /* z-index: 1; */
     }
 
     #close-menu,
     #open-menu {
-        /* com menu inativo */
         display: none;
         border: none;
         background: none;
         width: auto;
         height: fit-content;
         position: absolute;
-        right: 14px;
-        top: 25px;
+        right: .875rem;
+        top: 1.5625rem;
     }
 
     nav.show-menu,
@@ -44,33 +39,30 @@
     nav>a,
     nav>a>button {
         width: 100%;
-        /* border: 1px solid green; */
     }
 
     header>div {
-        /* align-items: center; */
         height: fit-content;
         width: 100vw;
         flex-wrap: wrap;
-        padding: 25px 14px;
-        /* gap: 404px; */
+        padding: 1.5625rem .875rem;
         position: relative;
     }
 
     main.main-mobile {
-        margin: 0px;
-        padding: 0px;
+        margin: 0rem;
+        padding: 0rem;
         height: 100vh;
         background-size: cover;
         align-items: flex-start;
     }
 
     main.main-index {
-        padding-top: 23px;
+        padding-top: 1.4375rem;
     }
 
     main.show-menu {
-        transform: translateY(-92px);
+        transform: translateY(-5.75rem);
     }
 
     main>img {
@@ -79,10 +71,8 @@
 
     section.section-mobile {
         width: 100%;
-        /* height: 450px; */
-        margin-top: 28px;
-        padding: 40px 19px;
-
+        margin-top: 1.75rem;
+        padding: 2.5rem 1.1875rem;
     }
 
     form>h3 {
@@ -105,23 +95,21 @@
     }
 
     ul>li {
-        width: 241px;
-        padding-left: 15px;
+        width: 15.0625rem;
+        padding-left: .9375rem;
     }
 
     li>h4 {
-        width: 241px;
-        padding-bottom: 74px;
-        /* padding-right: 10px; */
+        width: 15.0625rem;
+        padding-bottom: 4.625rem;
     }
 
     li>span {
-        margin-bottom: 15px;
-        /* padding-right: 10px; */
+        margin-bottom: .9375rem;
     }
 
     .toast {
         top: unset;
-        bottom: 20px;
+        bottom: 1.25rem;
     }
 }

@@ -4,6 +4,8 @@ import { modalCreateDepartment, modalDeleteDepartment, modalDeleteEmployees, mod
 import { getAllCompanys } from "./tokenlessRequests.js"
 const token = localStorage.getItem('@kenzieEmpresas-userId')
 
+
+/* --------------- ENCERRAR A SESSÃO DO ADMIN --------------- */
 const logout = () => {
     const btnLogout = document.querySelector('#btn-logout')
     btnLogout.onclick = (event) => {
@@ -14,6 +16,7 @@ const logout = () => {
 }
 
 
+/* --------------- FECHAR O MODAL ABERTO --------------- */
 const closeModal = () => {
     const modal = document.querySelector('.modal-container')
     const btnClose = document.querySelector('#btn-close')
@@ -22,6 +25,7 @@ const closeModal = () => {
 }
 
 
+/* --------------- DELETAR O USUÁRIO SELECIONADO --------------- */
 const eventDeleteEmployee = () => {
     const btnsDelete = document.querySelectorAll('[data-delete-users-id]')
 
@@ -44,6 +48,7 @@ const eventDeleteEmployee = () => {
 }
 
 
+/* --------------- EDITAR CADASTRO DO FUNCIONÁRIO --------------- */
 const eventEditEmployees = () => {
     const btnsEdit = document.querySelectorAll('[data-edit-users-id]')
 
@@ -74,6 +79,7 @@ const eventEditEmployees = () => {
 }
 
 
+/* --------------- VIZUALIZAR DEPARTAMENTO SELECIONADO --------------- */
 const eventViewDepartment = (departments) => {
     const btnsView = document.querySelectorAll('[data-view]')
 
@@ -123,6 +129,7 @@ const eventViewDepartment = (departments) => {
 }
 
 
+/* --------------- DELETAR DEPARTAMENTO SELECIONADO --------------- */
 const eventDeleteDepartment = () => {
     const btnsDelete = document.querySelectorAll('[data-delete-department]')
     btnsDelete.forEach(button => {
@@ -155,6 +162,7 @@ const eventDeleteDepartment = () => {
 }
 
 
+/* --------------- EDITAR INFORMAÇÕES DO DEPARTAMENTO SELECIONADO --------------- */
 const eventEditDepartment = () => {
     const btnsEdit = document.querySelectorAll('[data-edit-description]')
     btnsEdit.forEach(button => {
@@ -180,6 +188,7 @@ const eventEditDepartment = () => {
 }
 
 
+/* --------------- CRIAR UM NOVO DEPARTAMENTO --------------- */
 const eventCreateDepartment = (companies) => {
     const btnCreate = document.querySelector('#create-department')
     btnCreate.onclick = () => {
@@ -190,7 +199,7 @@ const eventCreateDepartment = (companies) => {
             modalCreateDepartment(companies, findCompany.name)
 
         } else modalCreateDepartment(companies, null)
-        
+
         const form = document.querySelector('form')
         const [...formElements] = form
         const body = {}
@@ -202,7 +211,7 @@ const eventCreateDepartment = (companies) => {
                 if (element.tagName == 'SELECT') {
                     const select = companies.find(company => element.value == company.name)
                     body[element.name] = select.uuid
-                  }
+                }
 
                 if (element.tagName == 'INPUT') body[element.name] = element.value
             });
@@ -216,6 +225,7 @@ const eventCreateDepartment = (companies) => {
 }
 
 
+/* --------------- ATUALIZAR A RENDERIZAÇÃO DOS DEPARTAMENTOS --------------- */
 const reloadDepartments = async () => {
     const select = document.querySelector('#companies')
     if (select.value == '') {
@@ -231,6 +241,7 @@ const reloadDepartments = async () => {
 }
 
 
+/* --------------- ATUALIZAR A RENDERIZAÇÃO DOS FUNCIONÁRIOS --------------- */
 const reloadEmployees = async () => {
     renderEmployees(await listAllUsers(token), await listAllDepartments(token))
     const modal = document.querySelector('.modal-container')
@@ -238,6 +249,7 @@ const reloadEmployees = async () => {
 }
 
 
+/* --------------- RENDERIZAR DEPARTAMENTOS DA EMPRESA SELECIONADA --------------- */
 const renderSelect = async () => {
     const select = document.querySelector('#companies')
     const allCompanies = await getAllCompanys()
@@ -263,7 +275,7 @@ const renderSelect = async () => {
 }
 
 
-
+/* --------------- RENDERIZAR OS DEPARTAMENTOS --------------- */
 const renderDepartments = async (departments) => {
     const list = document.querySelector('.list-departments')
     list.innerHTML = ''
@@ -297,7 +309,7 @@ const renderDepartments = async (departments) => {
 }
 
 
-
+/* --------------- RENDERIZAR OS FUNCIONÁRIOS --------------- */
 const renderEmployees = async (employees, departments) => {
     const list = document.querySelector('.list-employees')
     list.innerHTML = ''
@@ -337,6 +349,7 @@ const renderEmployees = async (employees, departments) => {
 }
 
 
+/* --------------- RENDERIZAR FUNCIONÁRIOS CONTRATADOS NO DEPARTAMENTO --------------- */
 export const renderEmployeesByDepartment = (employees, uuid, company) => {
     const listEmployees = document.querySelector('.list-employees-department')
 
@@ -358,7 +371,8 @@ export const renderEmployeesByDepartment = (employees, uuid, company) => {
     })
 }
 
-/* --------------- VERIFICA SE O USUÁRIO ESTÁ LOGADO -------------- */
+
+/* --------------- VERIFICAR SE O USUÁRIO TEM AUTENTICAÇÃO DE ADMINISTRADOR -------------- */
 const verifyPermission = async () => {
     if (token == '' || token == null) {
         window.location.replace('../../index.html')

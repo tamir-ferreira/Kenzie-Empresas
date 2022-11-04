@@ -3,6 +3,7 @@ import { sendToast } from "./employeesRequests.js";
 /* ================= ADMINISTRADOR ================== */
 const urlBase = 'http://localhost:6278'
 
+
 /* ----------------- LISTAR TODOS OS USUÁRIOS ---------------- */
 export const listAllUsers = (token) => {
     const options = {
@@ -149,7 +150,7 @@ export const createDepartment = async (token, body) => {
     }).catch(function (error) {
         console.error(error);
     });
-    console.log(request)
+
     if (request.statusText == 'Created') {
         const message = 'Departamento criado com sucesso!'
         sendToast(message, true)

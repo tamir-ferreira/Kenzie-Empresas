@@ -1,5 +1,7 @@
 import { renderEmployeesByDepartment } from "./adminPage.js"
 
+
+/* --------------- CRIA O CONTAINER GERAL PARA OS MODAIS --------------- */
 const modalContainer = () => {
     const body = document.querySelector('body')
     const divContainer = document.createElement('div')
@@ -21,6 +23,8 @@ const modalContainer = () => {
     return content
 }
 
+
+/* --------------- CRIA O MODAL PARA DELETAR DEPARTAMENTO --------------- */
 export const modalDeleteDepartment = (department) => {
     const content = modalContainer()
 
@@ -34,6 +38,7 @@ export const modalDeleteDepartment = (department) => {
 }
 
 
+/* --------------- CRIA O MODAL PARA CRIAR DEPARTAMENTO --------------- */
 export const modalCreateDepartment = (companies, companySelected) => {
     const content = modalContainer()
 
@@ -62,6 +67,8 @@ export const modalCreateDepartment = (companies, companySelected) => {
     if (companySelected != null) select.value = companySelected
 }
 
+
+/* --------------- CRIA O MODAL PARA EDITAR DEPARTAMENTO --------------- */
 export const modalEditDepartment = (description) => {
     const content = modalContainer()
 
@@ -77,45 +84,7 @@ export const modalEditDepartment = (description) => {
 }
 
 
-export const modalDeleteEmployees = (employee) => {
-    const content = modalContainer()
-
-    content.classList.add('modal-confirmation')
-
-    content.insertAdjacentHTML('afterbegin',
-        `<h3>Realmente deseja remover o usuário ${employee}?</h3>
-         <button type="button" id="btn-confirm" class="btn-success">Confirmar</button>
-        `
-    )
-}
-
-
-export const modalEditEmployee = () => {
-    const content = modalContainer()
-
-    content.insertAdjacentHTML('afterbegin',
-        `<h2>Editar Usuário</h2>
-        <form action="">
-            <select name="kind_of_work">
-            <option value=''>Selecionar modalidade de trabalho</option>
-            <option value='home office'>Home Office</option>
-            <option value='presencial'>Presencial</option>
-            <option value='hibrido'>Híbrido</option>
-            </select>
-            <select name="professional_level">
-            <option value=''>Selecionar nível profissional</option>
-            <option value='estágio'>Estágio</option>
-            <option value='júnior'>Júnior</option>
-            <option value='pleno'>Pleno</option>
-            <option value='sênior'>Sênior</option>
-            </select>
-            <button class="btn-brand">Salvar alterações</button>
-        </form>
-        `
-    )
-}
-
-
+/* --------------- CRIA O MODAL PARA VIZUALIZAR DEPARTAMENTO --------------- */
 export const modalViewDepartment = (departmentSelected, employeesOutOfWork, employees) => {
 
     const content = modalContainer()
@@ -154,3 +123,45 @@ export const modalViewDepartment = (departmentSelected, employeesOutOfWork, empl
 
     renderEmployeesByDepartment(employees, uuid, company)
 }
+
+
+/* --------------- CRIA O MODAL PARA DELETAR FUNCIONÁRIOS --------------- */
+export const modalDeleteEmployees = (employee) => {
+    const content = modalContainer()
+
+    content.classList.add('modal-confirmation')
+
+    content.insertAdjacentHTML('afterbegin',
+        `<h3>Realmente deseja remover o usuário ${employee}?</h3>
+         <button type="button" id="btn-confirm" class="btn-success">Confirmar</button>
+        `
+    )
+}
+
+
+/* --------------- CRIA O MODAL PARA EDITAR FUNCIONÁRIOS --------------- */
+export const modalEditEmployee = () => {
+    const content = modalContainer()
+
+    content.insertAdjacentHTML('afterbegin',
+        `<h2>Editar Usuário</h2>
+        <form action="">
+            <select name="kind_of_work">
+            <option value=''>Selecionar modalidade de trabalho</option>
+            <option value='home office'>Home Office</option>
+            <option value='presencial'>Presencial</option>
+            <option value='hibrido'>Híbrido</option>
+            </select>
+            <select name="professional_level">
+            <option value=''>Selecionar nível profissional</option>
+            <option value='estágio'>Estágio</option>
+            <option value='júnior'>Júnior</option>
+            <option value='pleno'>Pleno</option>
+            <option value='sênior'>Sênior</option>
+            </select>
+            <button class="btn-brand">Salvar alterações</button>
+        </form>
+        `
+    )
+}
+

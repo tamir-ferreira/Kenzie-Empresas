@@ -2,8 +2,10 @@ import { checkUserType } from "./employeesRequests.js"
 import { toggleMenu } from "./menuMobile.js"
 import { login } from "./tokenlessRequests.js"
 
+
 toggleMenu()
 
+/* --------------- VERIFICA E AUTENTICA USUÁRIOS --------------- */
 const eventLogin = () => {
     const form = document.querySelector('form')
 
@@ -17,18 +19,13 @@ const eventLogin = () => {
         });
 
         const response = await login(body)
-        // console.log(response)
 
         if (response === 'OK') {
-            console.log(`ok`)
             const token = localStorage.getItem('@kenzieEmpresas-userId')
             const isAdmin = await checkUserType(token)
-            console.log(isAdmin)
-            if (isAdmin) {
-                window.location.replace('../pages/adminPage.html')
-            } else {
-                window.location.replace('../pages/userPage.html')
-            }
+
+            if (isAdmin) window.location.replace('../pages/adminPage.html')
+            else window.location.replace('../pages/userPage.html')
 
         } else {
             if (response === 'email') formElements[0].style.borderColor = "var(--color-alert)"
@@ -46,7 +43,5 @@ const eventLogin = () => {
             }
         })
     }
-
 }
-
 eventLogin()

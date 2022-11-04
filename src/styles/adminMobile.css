@@ -1,19 +1,19 @@
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 37.5rem) {
     body {
         width: 100vw;
         height: 100vh;
     }
 
     header {
-        padding: 20px;
+        padding: 1.25rem;
     }
 
     nav>button {
         width: auto;
-        padding: 0 10px;
+        padding: 0 .625rem;
     }
 
-    .modal-container>div>h2{
+    .modal-container>div>h2 {
         font-size: var(--size-title-5);
     }
 
@@ -22,70 +22,59 @@
     }
 
     .departments>div {
-        /* background-color: red; */
         flex-direction: column;
-        gap: 20px;
+        gap: 1.25rem;
         padding: 0;
-        margin: 30px 0;
+        margin: 1.875rem 0;
         width: 100%;
-        /* padding: 20px; */
     }
-
 
     .list-departments,
     .list-employees {
         width: 100%;
-        /* background-color: red; */
         flex-wrap: nowrap;
-        padding: 30px;
+        padding: 1.875rem;
         height: auto;
     }
 
     .list-departments>li {
         height: auto;
-        padding: 15px;
+        padding: .9375rem;
     }
 
     .list-departments>li>h4 {
-        /* background-color: green; */
-        width: 350px;
+        width: 21.875rem;
     }
 
     .list-employees>li {
         height: auto;
         margin: 0;
-        padding: 20px;
+        padding: 1.25rem;
     }
 
     .list-employees>li>h4 {
-        /* background-color: green; */
-        width: 200px;
+        width: 12.5rem;
     }
 
     .modal-container>div {
         width: 100%;
-        padding: 20px;
-
+        padding: 1.25rem;
     }
 
     div.modal-departments>div {
-        margin-bottom: 10px;
+        margin-bottom: .625rem;
     }
 
     div.modal-departments>div>form>Select {
-        /* margin-left: 15px; */
-        /* background-color: green; */
-        /* gap: 20px; */
-        width: 185px;
-        margin-left: 15px;
-        padding-left: 5px;
+        width: 11.5625rem;
+        margin-left: .9375rem;
+        padding-left: .3125rem;
         text-align: center;
     }
 
     div.modal-confirmation {
         width: 100%;
-        /* background-color: green; */
-        padding: 70px 30px;
+        padding: 4.375rem 1.875rem;
     }
 
     div.modal-departments>ul>li>div {
@@ -93,7 +82,7 @@
     }
 
     .toast {
-        top:unset;
-        bottom: 20px;
+        top: unset;
+        bottom: 1.25rem;
     }
 }

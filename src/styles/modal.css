@@ -1,18 +1,15 @@
 .modal-container {
     display: flex;
-    /* display: none; */
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     background-color: var(--color-modal);
     height: 100vh;
     width: 100vw;
     position: fixed;
-    /* left: 0; */
     top: 0;
 }
 
-.hide-modal{
+.hide-modal {
     display: none;
 }
 
@@ -21,27 +18,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 14px;
-    width: 506px;
-    /* margin: 0 auto; */
-    padding: 40px 40px 57px 40px;
-    /* border: 1px solid green; */
+    gap: .875rem;
+    width: 31.625rem;
+    padding: 2.5rem 2.5rem 3.5625rem 2.5rem;
     background-color: var(--color-white);
     position: relative;
 }
 
-#btn-close{
+#btn-close {
     display: flex;
-    width:fit-content;
+    width: fit-content;
     height: fit-content;
-    /* padding: 5px; */
     border: none;
     background: none;
     position: absolute;
-    top: 15px;
-    right: 20px;
+    top: .9375rem;
+    right: 1.25rem;
 }
-
 
 .modal-container>div>img:hover {
     cursor: pointer;
@@ -56,98 +49,83 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 13px;
-    /* border: 1px solid green; */
+    gap: .8125rem;
 }
 
 .modal-container button {
     width: 100%;
-    margin-top: 8px;
-    /* font-size: 18px; */
+    margin-top: .5rem;
 }
 
 div.modal-departments {
     display: flex;
     flex-direction: column;
-    width: 857px;
+    width: 53.5625rem;
 }
 
 div.modal-departments>div {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    /* background-color: red; */
-    margin-bottom: 37px;
-    /* overflow: scroll; */
-
+    margin-bottom: 2.3125rem;
 }
 
 div.modal-departments>div>div {
     display: flex;
     flex-direction: column;
-    /* background-color: red; */
-    margin-top: 15px;
-    gap: 11px;
-
+    margin-top: .9375rem;
+    gap: .6875rem;
 }
 
 div.modal-departments>div>form {
     display: flex;
     flex-direction: column;
-    width: 422px;
-    /* background-color: blue; */
+    width: 26.375rem;
 }
 
-div.modal-departments>div>form> button {
-    /* background-color: blue; */
+div.modal-departments>div>form>button {
     align-self: flex-end;
     width: fit-content;
-    /* padding: 0 26px; */
-    width: 157px;
+    width: 9.8125rem;
 }
 
 div.modal-departments>ul {
     display: flex;
     flex-direction: row;
-    /* border: 1px solid red; */
-    height: 290px;
+    height: 18.125rem;
     width: 100%;
     background-color: var(--color-grey-1);
-    padding: 43px 33px;
-    gap: 31px;
+    padding: 2.6875rem 2.0625rem;
+    gap: 1.9375rem;
     overflow-x: scroll;
 }
 
 div.modal-departments>ul>li {
     display: flex;
     flex-direction: column;
-    /* width: 100%; */
-    /* min-width: 196px; */
     background-color: var(--color-white);
-    padding: 18px 29px;
-    gap: 22px;
-    border-bottom: 1px solid var(--color-brand);
-    /* border: 1px solid blue */
+    padding: 1.125rem 1.8125rem;
+    gap: 1.375rem;
+    border-bottom: .0625rem solid var(--color-brand);
 }
 
 div.modal-departments>ul>li>div {
     display: flex;
     flex-direction: column;
-    gap: 9px;
-    width: 306px;
+    gap: .5625rem;
+    width: 19.125rem;
 }
 
 div.modal-departments>ul>li>button {
     align-self: center;
-    width: 157px;
+    width: 9.8125rem;
 }
-
 
 div.modal-confirmation {
     display: flex;
     flex-direction: column;
-    width: 733px;
-    padding: 70px 157px 56px 157px;
+    width: 45.8125rem;
+    padding: 4.375rem 9.8125rem 3.5rem 9.8125rem;
 }
 
 div.modal-confirmation h3 {

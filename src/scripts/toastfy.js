@@ -1,3 +1,4 @@
+/* --------------- CRIA O TOASTFY --------------- */
 export const createToast = (content, isOk) => {
     const body = document.querySelector('body')
     const div = document.createElement('div')
@@ -12,5 +13,4 @@ export const createToast = (content, isOk) => {
     h4.innerHTML = content
     body.appendChild(div)
     div.appendChild(h4)
-
 }

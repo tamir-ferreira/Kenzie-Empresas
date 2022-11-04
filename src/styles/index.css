@@ -1,33 +1,21 @@
 main {
     display: flex;
     justify-content: space-between;
-    padding-top: 43px;
-    
+    padding-top: 2.6875rem;
 }
 
 section {
-    width: 550px;
-    height: 743px;
-    /* border: 1px solid green; */
+    width: 34.375rem;
+    height: 46.4375rem;
     background-color: var(--color-grey-1);
-    box-shadow: 0px 0px 35px var(--border-1);
-    /* border: 1px solid green; */
+    box-shadow: 0rem 0rem 2.1875rem var(--border-1);
 }
 
-/* section > div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 52px;
-    background-color: var(--color-brand);
-    position: relative;
-} */
-
 section>div {
-    height: 52px;
+    height: 3.25rem;
     overflow: hidden;
     background: url('../images/arrowBottom.svg') no-repeat center var(--color-brand);
-    background-position-x: 505px;
+    background-position-x: 31.5625rem;
 }
 
 section>div>select {
@@ -38,7 +26,7 @@ section>div>select {
     background: transparent;
     height: 100%;
     width: 100%;
-    padding: 5px;
+    padding: .3125rem;
     line-height: 1;
     color: var(--color-white);
     font-family: var(--family-2);
@@ -50,20 +38,12 @@ section>div>select>option {
     font-family: var(--family-2);
 }
 
-
-
-/* section>div>img {
-    position: absolute;
-    right: 14px;
-} */
-
 section>ul {
     display: flex;
     flex-direction: column;
-    /* width: 549px; */
-    gap: 22px;
-    padding: 25px 30px;
-    height:691px;
+    gap: 1.375rem;
+    padding: 1.5625rem 1.875rem;
+    height: 43.1875rem;
     background-color: var(--color-grey-1);
     overflow-y: scroll;
 }
@@ -71,11 +51,10 @@ section>ul {
 ul>li {
     display: flex;
     flex-direction: column;
-    gap: 13px;
-    padding: 13px 25px;
+    gap: .8125rem;
+    padding: .8125rem 1.5625rem;
     background-color: var(--color-white);
-    border-bottom: 1px solid var(--color-brand);
-    /* height: 50px; */
+    border-bottom: .0625rem solid var(--color-brand);
 }
 
 li h4 {
@@ -84,7 +63,7 @@ li h4 {
 
 li span {
     width: fit-content;
-    padding: 6px 26px;
-    border: 1px solid var(--color-brand);
+    padding: .375rem 1.625rem;
+    border: .0625rem solid var(--color-brand);
     border-radius: var(--radius-2);
 }

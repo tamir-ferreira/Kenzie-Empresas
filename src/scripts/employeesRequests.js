@@ -115,6 +115,6 @@ export const checkUserType = async(token) => {
         return request.data.is_admin
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
