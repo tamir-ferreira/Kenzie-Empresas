@@ -1,3 +1,5 @@
+import { renderEmployeesByDepartment } from "./adminPage.js"
+
 const modalContainer = () => {
     const body = document.querySelector('body')
     const divContainer = document.createElement('div')
@@ -32,11 +34,9 @@ export const modalDeleteDepartment = (department) => {
 }
 
 
-export const modalCreateDepartment = (companies) => {
+export const modalCreateDepartment = (companies, companySelected) => {
     const content = modalContainer()
-    // console.log(content)
 
-    // console.log(content)
     content.insertAdjacentHTML('afterbegin',
         `<h2>Criar Departamento</h2>
         <form action="">
@@ -52,20 +52,19 @@ export const modalCreateDepartment = (companies) => {
 
     const select = document.querySelector('#companies-modal')
 
-    // console.log(select)
     companies.forEach(company => {
-            // console.log(company.name)
-            const option = document.createElement('option')
-            option.innerText = company.name
-            option.value = company.name
-            select.appendChild(option)
-
+        const option = document.createElement('option')
+        option.innerText = company.name
+        option.value = company.name
+        select.appendChild(option)
     });
+
+    if (companySelected != null) select.value = companySelected
 }
 
 export const modalEditDepartment = (description) => {
     const content = modalContainer()
-    // console.log(description)
+
     content.insertAdjacentHTML('afterbegin',
         `<h2>Editar Departamento</h2>
         <form action="">
@@ -93,7 +92,7 @@ export const modalDeleteEmployees = (employee) => {
 
 export const modalEditEmployee = () => {
     const content = modalContainer()
-    // console.log(description)
+
     content.insertAdjacentHTML('afterbegin',
         `<h2>Editar Usuário</h2>
         <form action="">
@@ -117,12 +116,13 @@ export const modalEditEmployee = () => {
 }
 
 
-export const modalViewDepartment = (department) => {
+export const modalViewDepartment = (departmentSelected, employeesOutOfWork, employees) => {
+
     const content = modalContainer()
-    const {name, description} = department[0]
-    const {name: company} = department[0].companies
+    const { name, description, uuid } = departmentSelected[0]
+    const { name: company } = departmentSelected[0].companies
     content.className = 'modal-departments'
-    console.log(department[0])
+
     content.insertAdjacentHTML('afterbegin',
         `<h2>${name}</h2>
         <div>
@@ -130,41 +130,27 @@ export const modalViewDepartment = (department) => {
                 <h4>${description}</h4>
                 <span>${company}</span>
             </div>
-            <div>
-                <select name="" id="">
-                    <option value="">Selecionar usuário</option>
-                    <option value="">Selecionar usuário</option>
+            <form>
+                <select name="user_uuid" id="out-of-work">
                     <option value="">Selecionar usuário</option>
                 </select>
-                <button class="btn-success">Contratar</button>
-            </div>
+                <button id="btn-hire" class="btn-success">Contratar</button>
+            </form>
         </div>
         <ul class="list-employees-department">
-            <li>
-                <div>
-                    <h4>Username</h4>
-                    <span>Pleno</span>
-                    <span>Company Name</span>
-                </div>
-                <button class="btn-alert">Desligar</button>
-            </li>
-            <li>
-                <div>
-                    <h4>Username</h4>
-                    <span>Pleno</span>
-                    <span>Company Name</span>
-                </div>
-                <button class="btn-alert">Desligar</button>
-            </li>
-            <li>
-                <div>
-                    <h4>Username</h4>
-                    <span>Pleno</span>
-                    <span>Company Name</span>
-                </div>
-                <button class="btn-alert">Desligar</button>
-            </li>
         </ul>
         `
     )
+
+    const select = document.querySelector('#out-of-work')
+
+    employeesOutOfWork.forEach(employee => {
+        const option = document.createElement('option')
+        option.innerText = employee.username
+        option.value = employee.uuid
+
+        select.appendChild(option)
+    })
+
+    renderEmployeesByDepartment(employees, uuid, company)
 }
