@@ -1,6 +1,6 @@
-import { checkUserType } from "./employeesRequests.js"
-import { toggleMenu } from "./menuMobile.js"
-import { login } from "./tokenlessRequests.js"
+import { checkUserType } from "./employeesrequests.js"
+import { toggleMenu } from "./menumobile.js"
+import { login } from "./tokenlessrequests.js"
 
 
 toggleMenu()
@@ -24,8 +24,8 @@ const eventLogin = () => {
             const token = localStorage.getItem('@kenzieEmpresas-userId')
             const isAdmin = await checkUserType(token)
 
-            if (isAdmin) window.location.replace('../pages/adminPage.html')
-            else window.location.replace('../pages/userPage.html')
+            if (isAdmin) window.location.replace('../pages/adminpage.html')
+            else window.location.replace('../pages/userpage.html')
 
         } else {
             if (response === 'email') formElements[0].style.borderColor = "var(--color-alert)"
