@@ -1,4 +1,4 @@
-import { sendToast } from "./employeesRequests.js";
+import { sendToast } from "./employeesrequests.js";
 
 /* ================= ADMINISTRADOR ================== */
 const urlBase = 'http://localhost:6278'

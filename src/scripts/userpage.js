@@ -1,4 +1,4 @@
-import { checkUserType, getUserInformation, listCompanyDepartments, listUsersSameDepartment, updateUserInfo } from "./employeesRequests.js"
+import { checkUserType, getUserInformation, listCompanyDepartments, listUsersSameDepartment, updateUserInfo } from "./employeesrequests.js"
 const token = localStorage.getItem('@kenzieEmpresas-userId')
 
 
@@ -127,7 +127,7 @@ const verifyPermission = async () => {
     } else {
         const isAdmin = await checkUserType(token)
         if (isAdmin) {
-            window.location.replace('./adminPage.html')
+            window.location.replace('./adminpage.html')
         } else {
             if (isAdmin == undefined) {
                 window.location.replace('../../index.html')

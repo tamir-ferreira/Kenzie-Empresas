@@ -1,7 +1,7 @@
-import { createDepartment, deleteDepartment, deleteUser, dismissEmployee, editDepartment, hireEmployee, listAllDepartments, listAllDepartmentsByCompany, listAllUsers, listWithoutDepartment, updateUserInfoByAdmin } from "./adminRequests.js"
-import { checkUserType } from "./employeesRequests.js"
+import { createDepartment, deleteDepartment, deleteUser, dismissEmployee, editDepartment, hireEmployee, listAllDepartments, listAllDepartmentsByCompany, listAllUsers, listWithoutDepartment, updateUserInfoByAdmin } from "./adminrequests.js"
+import { checkUserType } from "./employeesrequests.js"
 import { modalCreateDepartment, modalDeleteDepartment, modalDeleteEmployees, modalEditDepartment, modalEditEmployee, modalViewDepartment } from "./modal.js"
-import { getAllCompanys } from "./tokenlessRequests.js"
+import { getAllCompanys } from "./tokenlessrequests.js"
 const token = localStorage.getItem('@kenzieEmpresas-userId')
 
 
@@ -380,7 +380,7 @@ const verifyPermission = async () => {
         const isAdmin = await checkUserType(token)
 
         if (!isAdmin) {
-            window.location.replace('./userPage.html')
+            window.location.replace('./userpage.html')
         } else {
             renderSelect()
             renderDepartments(await listAllDepartments(token))
